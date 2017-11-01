@@ -1,4 +1,6 @@
-# REST service endpoint for HydraDB for use with regressionserver
+# REST service endpoint for HydraDB
+
+This REST service endpoint is for use with regressionserver
 
 ## Building a new hydradbREST distribution
 
