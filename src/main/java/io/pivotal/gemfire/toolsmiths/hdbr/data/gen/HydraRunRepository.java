@@ -1,7 +1,7 @@
 package io.pivotal.gemfire.toolsmiths.hdbr.data.gen;
 
-import io.pivotal.gemfire.toolsmiths.hdbr.data.gen.db.JdbcRepository;
-//import com.nurkiewicz.jdbcrepository.JdbcRepository;
+import io.pivotal.gemfire.toolsmiths.hdbr.data.gen.db.JdbcRepositoryOriginal;
+//import com.nurkiewicz.jdbcrepository.JdbcRepositoryOriginal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.stereotype.Repository;
@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import io.pivotal.gemfire.toolsmiths.hdbr.data.gen.db.HydraRunDB;
 import io.pivotal.gemfire.toolsmiths.hdbr.data.gen.db.RowUnmapper;
-import io.pivotal.gemfire.toolsmiths.hdbr.data.gen.HydraRun;
 import org.springframework.jdbc.core.RowMapper;
 //import com.nurkiewicz.jdbcrepository.RowUnmapper;
 
@@ -19,7 +18,7 @@ import org.springframework.jdbc.core.RowMapper;
  * @author Spring Data Jdbc Code Generator
  */
 @Repository
-public class HydraRunRepository extends JdbcRepository<HydraRun, Integer>
+public class HydraRunRepository extends JdbcRepositoryOriginal<HydraRun, Integer>
 {
 
 	final static Logger logger = LoggerFactory.getLogger (HydraRunRepository.class);
@@ -40,6 +39,16 @@ public class HydraRunRepository extends JdbcRepository<HydraRun, Integer>
 	public HydraRunRepository(RowMapper<HydraRun> rowMapper, RowUnmapper<HydraRun> rowUnmapper, String idColumn)
 	{
 		super (HydraRunDB.ROW_MAPPER, HydraRunDB.ROW_UNMAPPER, HydraRunDB.getTableName (), idColumn);
+	}
+
+	@Override
+	HydraRun save(HydraRun hydraRun) {
+		if(hydraRun.isNew()) {
+			insert(hydraRun);
+		}
+		else {
+			update(hydraRun);
+		}
 	}
 
 	@Override
