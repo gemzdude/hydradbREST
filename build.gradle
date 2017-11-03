@@ -1,0 +1,42 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.8.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'gs-rest-service'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+// https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+
+    compile("org.springframework.boot:spring-boot-starter-web")
+//    compile("org.springframework.boot:spring-boot-starter-jdbc")
+    compile("org.springframework:spring-jdbc")
+    compile group: 'org.springframework.data', name: 'spring-data-commons-core', version: '1.1.0.RELEASE'
+    // https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp
+    compile group: 'commons-dbcp', name: 'commons-dbcp', version: '1.4'
+    compile 'postgresql:postgresql:9.1-901-1.jdbc4'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('com.jayway.jsonpath:json-path')
+}
+

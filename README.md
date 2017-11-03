@@ -6,3 +6,20 @@ This REST service endpoint is for use with regressionserver
 
 hydradbREST uses gradle to build. To compile, run './gradlew build'
 
+## Generating HydraDB java classes
+
+Follow install instructions for the code generators
+
+  spring-data-jdbc-codegen
+  
+  spring-data-jdbc-codegen-maven-plugin
+  
+The codegenerator.properties file has been tailored for local Postgresql HydraDB server and the HydradbREST pom.xml has the required dependencies and plugin entries.
+
+From the root project directory (i.e. hydradbREST) type:
+
+  mvn clean install
+  
+The generated java classes and helper classes will be placed into:
+
+src/main/java/io.pivotal.gemfire.toolsmiths.data.gen
