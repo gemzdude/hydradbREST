@@ -1,35 +1,35 @@
-package io.pivotal.gemfire.toolsmiths.hdbr.data.gen.db;
+package io.pivotal.gemfire.toolsmiths.hdbr.data;
 
-    import com.nurkiewicz.jdbcrepository.sql.SqlGenerator;
-    import org.springframework.beans.BeansException;
-    import org.springframework.beans.factory.BeanFactory;
-    import org.springframework.beans.factory.BeanFactoryAware;
-    import org.springframework.beans.factory.InitializingBean;
-    import org.springframework.beans.factory.NoSuchBeanDefinitionException;
-    import org.springframework.data.domain.Page;
-    import org.springframework.data.domain.PageImpl;
-    import org.springframework.data.domain.Pageable;
-    import org.springframework.data.domain.Persistable;
-    import org.springframework.data.domain.Sort;
-    import org.springframework.data.repository.PagingAndSortingRepository;
-    import org.springframework.jdbc.core.JdbcOperations;
-    import org.springframework.jdbc.core.JdbcTemplate;
-    import org.springframework.jdbc.core.PreparedStatementCreator;
-    import org.springframework.jdbc.core.RowMapper;
-    import org.springframework.jdbc.support.GeneratedKeyHolder;
-    import org.springframework.util.Assert;
+import io.pivotal.gemfire.toolsmiths.hdbr.data.sql.SqlGenerator;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.BeanFactoryAware;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Persistable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.jdbc.core.JdbcOperations;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.util.Assert;
 
-    import javax.sql.DataSource;
-    import java.io.Serializable;
-    import java.sql.Connection;
-    import java.sql.PreparedStatement;
-    import java.sql.SQLException;
-    import java.util.ArrayList;
-    import java.util.Arrays;
-    import java.util.Collections;
-    import java.util.LinkedHashMap;
-    import java.util.List;
-    import java.util.Map;
+import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import javax.sql.DataSource;
 
 /**
  * Implementation of {@link PagingAndSortingRepository} using {@link JdbcTemplate}
@@ -163,7 +163,7 @@ public abstract class JdbcRepository<T extends Persistable<ID>, ID extends Seria
   }
 
   @Override
-  public List<T> findAll() {
+  public Iterable<T> findAll() {
     return jdbcOperations.query(sqlGenerator.selectAll(table), rowMapper);
   }
 
@@ -188,8 +188,17 @@ public abstract class JdbcRepository<T extends Persistable<ID>, ID extends Seria
       return Collections.<Object>singletonList(id);
   }
 
+//  @Override
+//  public <S extends T> S save(S entity) {
+//    if (entity.isNew()) {
+//      return create(entity);
+//    } else {
+//      return update(entity);
+//    }
+//  }
+
   @Override
-  public <S extends T> S save(S entity) {
+  public T save(T entity) {
     if (entity.isNew()) {
       return create(entity);
     } else {
@@ -283,16 +292,25 @@ public abstract class JdbcRepository<T extends Persistable<ID>, ID extends Seria
     return entity;
   }
 
+//  @Override
+//  public <S extends T> Iterable<S> save(Iterable<S> entities) {
+//    List<S> ret = new ArrayList<S>();
+//    for (S s : entities) {
+//      ret.add(save(s));
+//    }
+//    return ret;
+//  }
+
   @Override
-  public <S extends T> Iterable<S> save(Iterable<S> entities) {
-    List<S> ret = new ArrayList<S>();
-    for (S s : entities) {
+  public Iterable<T> save(Iterable<? extends T> entities) {
+    List<T> ret = new ArrayList<T>();
+    for (T s : entities) {
       ret.add(save(s));
     }
     return ret;
   }
 
-  @Override
+//  @Override
   public Iterable<T> findAll(Iterable<ID> ids) {
     final List<ID> idsList = toList(ids);
     if (idsList.isEmpty()) {

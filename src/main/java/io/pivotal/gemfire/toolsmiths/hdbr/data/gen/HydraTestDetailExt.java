@@ -19,7 +19,7 @@ public class HydraTestDetailExt implements Persistable<Long>
 
 	private transient boolean persisted;
 
-	private HydraTestDetail hydratestdetail;
+	private HydraTestDetail hydraTestsuiteDetail;
 
 	public HydraTestDetailExt ()
 	{
@@ -61,15 +61,15 @@ public class HydraTestDetailExt implements Persistable<Long>
 		return this.persisted;
 	}
 
-//	public void setHydraTestDetail (HydraTestDetail hydratestdetail)
-//	{
-//		this.hydratestdetail = hydratestdetail;
-//	}
-//
-//	public HydraTestDetail getHydraTestDetail ()
-//	{
-//		return this.hydratestdetail;
-//	}
+	public void set (HydraTestDetail hydraTestsuiteDetail)
+	{
+		this.hydraTestsuiteDetail = hydraTestsuiteDetail;
+	}
+
+	public HydraTestDetail get ()
+	{
+		return this.hydraTestsuiteDetail;
+	}
 
 	@Override
 	public String toString () 
@@ -78,15 +78,7 @@ public class HydraTestDetailExt implements Persistable<Long>
 	}
 
 	/* START Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
-	public void setHydraTestDetail (HydraTestDetail hydratestdetail)
-	{
-		this.hydratestdetail = hydratestdetail;
-	}
 
-	public HydraTestDetail getHydraTestDetail ()
-	{
-		return this.hydratestdetail;
-	}
 	/* END Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
 
 }

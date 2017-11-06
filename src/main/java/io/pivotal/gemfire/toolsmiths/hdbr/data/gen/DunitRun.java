@@ -1,7 +1,7 @@
 package io.pivotal.gemfire.toolsmiths.hdbr.data.gen;
 
 import org.springframework.data.domain.Persistable;
-import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import java.util.Date;
 
 /**

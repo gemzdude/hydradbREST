@@ -1,19 +1,22 @@
 package io.pivotal.gemfire.toolsmiths.hdbr;
 
 //import io.pivotal.gemfire.toolsmiths.hdbr.data.TestSuiteDetail;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import io.pivotal.gemfire.toolsmiths.hdbr.data.gen.HydraTestsuiteDetail;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequestMapping("/hdb")
 public class HydraTestSuite {
 
-  @Autowired
-  HydraDao dao;
-
-  RestTemplate restTemplate = new RestTemplate();
+//  @Autowired
+//  HydraDao dao;
+//
+//  RestTemplate restTemplate = new RestTemplate();
 
 //  @GetMapping(value = {"/v1/getOrCreateTestSuiteDetail"},
 //      params = {"runId",
@@ -45,8 +48,11 @@ public class HydraTestSuite {
 //          localConf,testSuiteId, runId, hostId, btComment, artifactLogLocation);
 //  }
 //
-//  @GetMapping(value = { "/test" })
-//  private TestSuiteDetail doTest() {
+  @GetMapping(value = { "/test" })
+  private String doTest(@PathVariable("id") HydraTestsuiteDetail hydraTestsuiteDetail, Model model) {
+    model.addAttribute("hydraTestsuiteDetail", hydraTestsuiteDetail);
+    return "hydraTestsuiteDetail";
+  }
 //    Date date = new Date();
 //    String dateStr = date.toString();
 //    String elapsedTime = "some time";

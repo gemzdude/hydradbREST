@@ -5,7 +5,7 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import com.nurkiewicz.jdbcrepository.RowUnmapper;
+import io.pivotal.gemfire.toolsmiths.hdbr.data.RowUnmapper;
 import io.pivotal.gemfire.toolsmiths.hdbr.data.gen.BASEENV;
 
 /**

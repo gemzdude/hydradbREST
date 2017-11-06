@@ -27,14 +27,15 @@ targetCompatibility = 1.8
 
 dependencies {
 // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
-    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+//    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
 
     compile("org.springframework.boot:spring-boot-starter-web")
-//    compile("org.springframework.boot:spring-boot-starter-jdbc")
-    compile("org.springframework:spring-jdbc")
+//    compile("org.springframework.boot:spring-boot-starter-data")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("org.springframework.boot:spring-boot-starter-jdbc")
+    compile 'org.apache.commons:commons-lang3:3.5'
     compile group: 'org.springframework.data', name: 'spring-data-commons-core', version: '1.1.0.RELEASE'
-    // https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp
-    compile group: 'commons-dbcp', name: 'commons-dbcp', version: '1.4'
+//    compile group: 'commons-dbcp', name: 'commons-dbcp', version: '1.4'
     compile 'postgresql:postgresql:9.1-901-1.jdbc4'
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('com.jayway.jsonpath:json-path')

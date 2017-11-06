@@ -2,19 +2,23 @@ package io.pivotal.gemfire.toolsmiths.hdbr;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.sql.DataSource;
 
 @Configuration
-@ComponentScan(basePackages = "HydraConfig.class")
+//@ComponentScan(basePackages = "HydraConfig.class")
 // @ComponentScan(value = {'your.package.here'}, excludeFilters = @Filter(ConfigurationToIgnore.class))
 @PropertySource(value = { "classpath:application.properties" })
+@EnableWebMvc
+@EnableSpringDataWebSupport
+//@EnableJpaRepositories("io.pivotal.gemfire.toolsmiths.hdbr")
 public class HydraConfig {
 
   @Autowired

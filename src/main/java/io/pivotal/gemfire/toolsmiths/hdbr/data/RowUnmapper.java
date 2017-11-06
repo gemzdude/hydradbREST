@@ -1,4 +1,4 @@
-package io.pivotal.gemfire.toolsmiths.hdbr.data.gen.db;
+package io.pivotal.gemfire.toolsmiths.hdbr.data;
 
 import java.util.Map;
 
