@@ -188,23 +188,23 @@ public abstract class JdbcRepository<T extends Persistable<ID>, ID extends Seria
       return Collections.<Object>singletonList(id);
   }
 
-//  @Override
-//  public <S extends T> S save(S entity) {
-//    if (entity.isNew()) {
-//      return create(entity);
-//    } else {
-//      return update(entity);
-//    }
-//  }
-
   @Override
-  public T save(T entity) {
+  public <S extends T> S save(S entity) {
     if (entity.isNew()) {
       return create(entity);
     } else {
       return update(entity);
     }
   }
+//
+//  @Override
+//  public T save(T entity) {
+//    if (entity.isNew()) {
+//      return create(entity);
+//    } else {
+//      return update(entity);
+//    }
+//  }
 
   protected <S extends T> S update(S entity) {
     final Map<String, Object> columns = preUpdate(entity, columns(entity));
@@ -292,23 +292,23 @@ public abstract class JdbcRepository<T extends Persistable<ID>, ID extends Seria
     return entity;
   }
 
-//  @Override
-//  public <S extends T> Iterable<S> save(Iterable<S> entities) {
-//    List<S> ret = new ArrayList<S>();
-//    for (S s : entities) {
-//      ret.add(save(s));
-//    }
-//    return ret;
-//  }
-
   @Override
-  public Iterable<T> save(Iterable<? extends T> entities) {
-    List<T> ret = new ArrayList<T>();
-    for (T s : entities) {
+  public <S extends T> Iterable<S> save(Iterable<S> entities) {
+    List<S> ret = new ArrayList<S>();
+    for (S s : entities) {
       ret.add(save(s));
     }
     return ret;
   }
+
+//  @Override
+//  public Iterable<T> save(Iterable<? extends T> entities) {
+//    List<T> ret = new ArrayList<T>();
+//    for (T s : entities) {
+//      ret.add(save(s));
+//    }
+//    return ret;
+//  }
 
 //  @Override
   public Iterable<T> findAll(Iterable<ID> ids) {

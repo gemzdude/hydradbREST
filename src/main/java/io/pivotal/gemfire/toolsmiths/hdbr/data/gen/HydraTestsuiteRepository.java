@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcOperations;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
@@ -50,6 +51,9 @@ public class HydraTestsuiteRepository extends JdbcRepository<HydraTestsuite, Int
 
 
 	/* START Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
+
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
 
 	/* END Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
 

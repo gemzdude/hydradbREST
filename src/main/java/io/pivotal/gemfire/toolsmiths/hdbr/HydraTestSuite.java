@@ -2,10 +2,7 @@ package io.pivotal.gemfire.toolsmiths.hdbr;
 
 //import io.pivotal.gemfire.toolsmiths.hdbr.data.TestSuiteDetail;
 
-import io.pivotal.gemfire.toolsmiths.hdbr.data.gen.HydraTestsuiteDetail;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/hdb")
 public class HydraTestSuite {
 
-//  @Autowired
-//  HydraDao dao;
+  @Autowired
+  io.pivotal.gemfire.toolsmiths.hdbr.data.gen.HydraTestsuiteRepository dao;
 //
 //  RestTemplate restTemplate = new RestTemplate();
 
@@ -48,11 +45,21 @@ public class HydraTestSuite {
 //          localConf,testSuiteId, runId, hostId, btComment, artifactLogLocation);
 //  }
 //
-  @GetMapping(value = { "/test" })
-  private String doTest(@PathVariable("id") HydraTestsuiteDetail hydraTestsuiteDetail, Model model) {
-    model.addAttribute("hydraTestsuiteDetail", hydraTestsuiteDetail);
-    return "hydraTestsuiteDetail";
-  }
+  //@GetMapping(value = { "/test" })
+  //@PathVariable("id")
+  //@RequestParam("id")
+//@RequestMapping(value="/test")
+//  private HydraTestsuite doTest(@RequestParam("id") int id) {
+//    HydraTestsuite hts = dao.findOne(id);
+//
+//    if(hts==null) {
+//      System.out.println("SAJSAJ hts is null");
+//    } else {
+//      System.out.println("SAJSAJ" + hts.getName());
+//    }
+////  return new ResponseEntity<>(hydraTestsuiteDetail, HttpStatus.OK);
+//    return hts;
+//  }
 //    Date date = new Date();
 //    String dateStr = date.toString();
 //    String elapsedTime = "some time";

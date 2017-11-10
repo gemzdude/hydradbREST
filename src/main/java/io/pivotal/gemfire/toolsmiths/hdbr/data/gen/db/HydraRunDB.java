@@ -186,6 +186,19 @@ public class HydraRunDB
 	}
 
 	/* START Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
+	public static StringBuffer getAllColumnNames ()
+	{
+		StringBuffer strBuf = new StringBuffer ();
+		int i = COLUMNS.values ().length;
+		for (COLUMNS c : COLUMNS.values ())
+		{
+			strBuf.append (c.getColumnName ());
+			if (--i > 0)
+				strBuf.append (", ");
+		}
+		return strBuf;
+	}
+
 
 	/* END Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
 
