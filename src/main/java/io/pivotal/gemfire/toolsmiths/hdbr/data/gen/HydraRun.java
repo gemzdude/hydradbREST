@@ -4,6 +4,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.data.domain.Persistable;
 
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -23,43 +24,43 @@ public class HydraRun implements Persistable<Integer>
 	@Id
 	private Integer id;
 
-//	@Column(name="userName")
+	@Column(name="userName")
 	private String userName;
 
-//	@Column(name="productVersion")
+	@Column(name="productVersion")
 	private String productVersion;
 
-//	@Column(name="buildId")
+	@Column(name="buildId")
 	private String buildId;
 
-//	@Column(name="svnRepository")
+	@Column(name="svnRepository")
 	private String svnRepository;
 
-//	@Column(name="svnRevision")
+	@Column(name="svnRevision")
 	private String svnRevision;
 
-//	@Column(name="javaVersion")
+	@Column(name="javaVersion")
 	private String javaVersion;
 
-//	@Column(name="javaVendor")
+	@Column(name="javaVendor")
 	private String javaVendor;
 
-//	@Column(name="javaHome")
+	@Column(name="javaHome")
 	private String javaHome;
 
-//	@Column(name="date")
+	@Column(name="date")
 	private Date date = new Date ();
 
-//	@Column(name="fullRegression")
+	@Column(name="fullRegression")
 	private Boolean fullRegression;
 
-//	@Column(name="regressionType")
+	@Column(name="regressionType")
 	private Integer regressionType;
 
-//	@Column(name="comments")
+	@Column(name="comments")
 	private String comments;
 
-//	@Column(name="buildLocation")
+	@Column(name="buildLocation")
 	private String buildLocation;
 
 	private transient boolean persisted;

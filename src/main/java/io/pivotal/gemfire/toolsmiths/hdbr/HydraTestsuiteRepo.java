@@ -10,7 +10,11 @@ public interface HydraTestsuiteRepo extends JpaRepository<HydraTestsuite, Long> 
   @Query("SELECT max(id) FROM HydraTestsuite")
   Integer maxSuite();
 
+  // SELECT ID, NAME FROM HYDRA_TESTSUITE WHERE ID=?
   @Query("SELECT s.id as id, s.name as name FROM HydraTestsuite s WHERE s.id = :id")
-  IdAndName getIdAndNameById(@Param("id") Integer id);
-  
+  IdAndName getHydraTestsuiteIdAndNameById(@Param("id") Integer id);
+
+  // SELECT ID, NAME, OS_TYPE, OS_INFO FROM HOST WHERE NAME=?
+  @Query("SELECT s.id as id, s.name as name FROM HydraTestsuite s WHERE s.name = :name")
+  IdAndName getHydraTestsuiteIdAndNameByName(@Param("name") String name);
 }

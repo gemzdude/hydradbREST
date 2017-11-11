@@ -22,8 +22,11 @@ public class HydraRunEndpoint {
   @Autowired
   HydraRunRepository dao;
 
+  @Autowired
+  HydraRunRepo hydraRunRepo;
+
   @GetMapping(value="/test", params="id")
-  private HydraRun doTest(@RequestParam("id") int id) {
+  private HydraRun getHydraRunById(@RequestParam("id") int id) {
 //  private HydraRun doTest(@RequestParam Map<String, String> myMap) {
 //    if(myMap.size()==0) {
 //      System.out.println("SAJSAJ no params");
@@ -36,13 +39,13 @@ public class HydraRunEndpoint {
 //
 //    int id = Integer.parseInt(myMap.get("id"));
 
-    HydraRun hr = dao.findOne(id);
+//    HydraRun hr = dao.findOne(id);
 
 //    if(hr!=null) {
 //      System.out.println("BUILD LOCATION: " + hr.getBuildLocation());
 //    }
 
-    return hr;
+    return hydraRunRepo.getHydraRunById(id);
   }
 
   @GetMapping(value="/test", params="loc")
@@ -136,9 +139,9 @@ public class HydraRunEndpoint {
   }
 
   @GetMapping("/user")
-  private List<String> user(@RequestParam("name") String uname, RestTemplate restTemplate) {
+  private List<HydraRun> user(@RequestParam("name") String uname, RestTemplate restTemplate) {
 
-    return service.regressionByUser(uname);
+    return hydraRunRepo.findFirst5ByUserNameOrderByDateDesc(uname);
   }
 
   @GetMapping("/maxsuite")
@@ -149,7 +152,7 @@ public class HydraRunEndpoint {
   @GetMapping("/idAndName")
   private IdAndName idAndName(@RequestParam("id") Integer id) {
 
-    IdAndName hts = service.getIdAndNameById(id);
+    IdAndName hts = service.getHydraTestsuiteIdAndNameById(id);
 
     return hts;
   }

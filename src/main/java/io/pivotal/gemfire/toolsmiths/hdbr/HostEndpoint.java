@@ -16,18 +16,12 @@ public class HostEndpoint {
 
   @GetMapping(value="", params="name")
   private Host getHost(@RequestParam("name") String name) {
-
-    Host theHost = dao.getHostByName(name);
-
-    return theHost;
+    return dao.getHostByName(name);
   }
 
   @GetMapping(value="", params="id")
   private Host getHost(@RequestParam("id") Integer id) {
-
-    Host theHost = dao.getHostById(id);
-
-    return theHost;
+    return dao.getHostById(id);
   }
 
   @GetMapping(value="/max")
