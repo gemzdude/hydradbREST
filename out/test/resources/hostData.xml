@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <Host id="1" name="odin" os_Type="Linux" os_Info="Linux i386 2.6.16.46-0.12-smp"/>
+    <Host id="2" name="thor" os_Type="Linux" os_Info="Linux i386 2.6.16.46-0.12-smp"/>
+    <Host id="3" name="stut" os_Type="Windows" os_Info="Windows Enterprise"/>
+</dataset>
