@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <Host id="1" name="newhost" os_Type="linux" os_Info="the os info"/>
+</dataset>

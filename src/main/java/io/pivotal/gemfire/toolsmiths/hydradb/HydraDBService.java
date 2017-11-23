@@ -6,6 +6,7 @@ import io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTest;
 import io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTestDetail;
 import io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTestsuiteDetail;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.ResponseEntity;
 
 import java.util.Date;
 import java.util.List;
@@ -15,18 +16,18 @@ public interface HydraDBService {
 
   /* Host methods */
 
-  List<Host> getHostByName(String name);
-  Host getHostById(Integer id);
-  void createHost(String name, String osType, String osInfo);
-  Integer maxHostId();
+  ResponseEntity<Host> getHostByName(String name);
+  ResponseEntity<Host> getHostById(Integer id);
+  ResponseEntity<Host> createHost(String name, String osType, String osInfo);
+  ResponseEntity<Integer> maxHostId();
 
   /* HydraRun methods */
 
-  HydraRun getHydraRunById(Integer id);
+  ResponseEntity<HydraRun> getHydraRunById(Integer id);
 
-  Integer maxHydraRunId();
+  ResponseEntity<Integer> maxHydraRunId();
 
-  HydraRun createHydraRun(String userName,
+  ResponseEntity<HydraRun> createHydraRun(String userName,
                           String productVersion,
                           String buildId,
                           String svnRepository,
@@ -34,15 +35,21 @@ public interface HydraDBService {
                           String javaVersion,
                           String javaVendor,
                           String javaHome,
-                          Date date,
+                          Boolean fullRegression,
                           Integer regressionType,
                           String comments,
                           String buildLocation
   );
 
-  Map<Integer, HydraRun> getHydraRunSet(List<Integer> list,
+  ResponseEntity<List<HydraRun>> hydraRunSearch(String userName, String productVersion, String buildId,
+                          String svnRepository, String svnRevision, String javaVersion,
+                          String javaVendor);
+
+  ResponseEntity<Map<Integer, HydraRun>> getHydraRunSet(List<Integer> list,
                                         String gemfireVersion, String jdk, String jdkVendor, int svnRevision,
                                         String branch, String buildUser);
+
+  ResponseEntity<List<Integer>> getHydraRunsForBatteryTest(int id, int numRuns);
 
   /* HydraTest methods */
 
@@ -98,7 +105,7 @@ public interface HydraDBService {
 
   HydraTestsuiteDetail getHydraTestsuiteDetailById(Integer hydraTestsuiteId);
 
-  Integer createHydraTestsuiteDetail(Date date,
+  HydraTestsuiteDetail createHydraTestsuiteDetail(Date date,
                                      String elapsedTime,
                                      String diskUsage,
                                      String localConf,
@@ -112,8 +119,6 @@ public interface HydraDBService {
   /* Hydra History methods */
 
   HydraHistory getHydraHistoryForBatteryTest(int id, Map<Integer, HydraRun> hydraRunList);
-
-  List<Integer> getHydraRunsForBatteryTest(int id, int numRuns);
 
   /* Misc test detail methods */
 

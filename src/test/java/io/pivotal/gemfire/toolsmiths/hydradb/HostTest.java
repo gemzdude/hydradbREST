@@ -4,6 +4,7 @@ import static io.restassured.RestAssured.given;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
+import com.github.springtestdbunit.TransactionDbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.DbUnitConfiguration;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
@@ -11,12 +12,12 @@ import io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.Host;
 import io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.repo.HostRepo;
 import org.apache.http.HttpStatus;
 import org.hamcrest.Matchers;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -34,8 +35,10 @@ import org.springframework.test.context.support.DirtiesContextTestExecutionListe
 @TestExecutionListeners({
     DependencyInjectionTestExecutionListener.class,
     DirtiesContextTestExecutionListener.class,
-    DbUnitTestExecutionListener.class
+    DbUnitTestExecutionListener.class,
+    TransactionDbUnitTestExecutionListener.class
 })
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class HostTest {
 
   @Autowired
@@ -72,10 +75,10 @@ public class HostTest {
         body("id", Matchers.is(theId));
   }
 
-  @Ignore
   @Test
   @DatabaseSetup(value="/hostData.xml")
-  @ExpectedDatabase(value = "/expectedData.xml", table = "Host")
+  @ExpectedDatabase(value = "/expectedHostData.xml", table = "Host")
+  //@DatabaseTearDown(type = DELETE_ALL, value = "/hostData.xml")
   public void canFetchHost3() {
 
     Integer theId = 3;
@@ -89,6 +92,36 @@ public class HostTest {
         body("id", Matchers.is(theId));
   }
 
+  @Test
+  @ExpectedDatabase(value = "/afterHostInsertData.xml", table = "Host")
+  public void canCreateHost() {
+    String theName = "newhost";
+    String theOsType = "linux";
+    String theOsInfo = "the os info";
+    given().port(port).
+        param("name", theName).
+        param("osType", theOsType).
+        param("osInfo", theOsInfo).
+        when().
+        get("/HydraDB/Host/create?name={name}&osType={osType}&osInfo={osInfo}", theName, theOsType, theOsInfo).
+        then().
+        statusCode(HttpStatus.SC_OK).
+        body("name", Matchers.is(theName)).
+        body("osType", Matchers.is(theOsType)).
+        body("osInfo", Matchers.is(theOsInfo));
+
+    Integer theId = 1;
+    given().port(port).
+        param("id", theId).
+        when().
+        get("/HydraDB/Host/getById?id={id}", theId).
+        then().
+        statusCode(HttpStatus.SC_OK).
+        body("name", Matchers.is(theName)).
+        body("osType", Matchers.is(theOsType)).
+        body("osInfo", Matchers.is(theOsInfo));
+  }
+}
 //  @Test
 //  @DatabaseSetup("hostData.xml")
 //  public void testFind() throws Exception {
@@ -99,8 +132,8 @@ public class HostTest {
 //
 //  @Test
 //  @DatabaseSetup("hostData.xml")
-//  @ExpectedDatabase("expectedData.xml")
+//  @ExpectedDatabase("expectedHostData.xml")
 //  public void testRemove() throws Exception {
 //    this.personService.remove(1);
 //  }
-}
+

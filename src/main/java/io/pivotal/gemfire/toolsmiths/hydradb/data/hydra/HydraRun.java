@@ -6,6 +6,7 @@ import org.springframework.data.domain.Persistable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -22,6 +23,7 @@ public class HydraRun implements Persistable<Integer>
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue
 	private Integer id;
 
 	@Column(name="userName")
@@ -48,8 +50,9 @@ public class HydraRun implements Persistable<Integer>
 	@Column(name="javaHome")
 	private String javaHome;
 
-	@Column(name="date")
-	private Date date = new Date ();
+	@Column(name="date", columnDefinition="DATE DEFAULT CURRENT_TIMESTAMP")
+//	@Temporal(TemporalType.DATE)
+	private Date date;
 
 	@Column(name="fullRegression")
 	private Boolean fullRegression;

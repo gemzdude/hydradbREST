@@ -14,8 +14,9 @@ import io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.repo.HydraTestsuiteDetai
 import io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.repo.HydraTestsuiteRepo;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,9 +30,9 @@ import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/HydraDB", produces = MediaType.APPLICATION_JSON_VALUE)
-public class HydraDBServiceEndpoint implements HydraDBService {
+public class HydraDBEndpointService implements HydraDBService {
 
-  private static Logger log = Logger.getLogger(HydraDBServiceEndpoint.class);
+  private static Logger log = Logger.getLogger(HydraDBEndpointService.class);
 
 //  private JdbcTemplate jdbcTemplate;
 
@@ -60,44 +61,73 @@ public class HydraDBServiceEndpoint implements HydraDBService {
   @Autowired
   HydraHistoryRepo hydraHistoryRepo;
 
+  /* Helper methods */
+
+  private ResponseEntity setResponse(Object obj) {
+    HttpStatus responseStatus = HttpStatus.NOT_FOUND;
+    if (obj != null) {
+      responseStatus = HttpStatus.OK;
+    }
+    return new ResponseEntity(obj, responseStatus);
+  }
+
+  private Host getHostFromList(List<Host> objList) {
+    Host obj = null;
+    if(objList != null && objList.size() > 0) {
+      obj = objList.get(0);
+    }
+    return obj;
+  }
+
   /* Host methods */
 
   @GetMapping(value="/Host/create", params={"name", "osType", "osInfo"})
-  public void createHost(@RequestParam("name") String name,
+  public ResponseEntity<Host> createHost(@RequestParam("name") String name,
                          @RequestParam("osType") String osType,
                          @RequestParam("osInfo") String osInfo) {
     hostRepo.createHost(name, osType, osInfo);
+    List<Host> hostList = hostRepo.getHostByName(name);
+    return setResponse(getHostFromList(hostList));
   }
 
   @GetMapping(value="/Host/getByName", params="name")
-  public List<Host> getHostByName(String name) {
-    return hostRepo.getHostByName(name);
+  public ResponseEntity<Host> getHostByName(String name) {
+    List<Host> hostList = hostRepo.getHostByName(name);
+    return setResponse(getHostFromList(hostList));
   }
 
   @GetMapping(value="/Host/getById", params="id")
-  public Host getHostById(@RequestParam("id") Integer id) {
-    return hostRepo.getHostById(id);
+  public ResponseEntity<Host> getHostById(@RequestParam("id") Integer id) {
+    return setResponse(hostRepo.getHostById(id));
   }
 
   @GetMapping(value="/Host/max")
-  public Integer maxHostId() {
-    return hostRepo.maxId();
+  public ResponseEntity<Integer> maxHostId() {
+    return setResponse(hostRepo.maxId());
   }
 
   /* HydraRun methods */
 
+  private HydraRun getRunFromList(List<HydraRun> objList) {
+    HydraRun obj = null;
+    if(objList != null && objList.size() > 0) {
+      obj = objList.get(0);
+    }
+    return obj;
+  }
+
   @GetMapping(value="/HydraRun/max")
-  public Integer maxHydraRunId() {
-    return hydraRunRepo.maxId();
+  public ResponseEntity<Integer> maxHydraRunId() {
+    return setResponse(hydraRunRepo.maxId());
   }
 
   @GetMapping(value="/HydraRun/getById", params="id")
-  public HydraRun getHydraRunById(@RequestParam("id") Integer id) {
-    return hydraRunRepo.getHydraRunById(id);
+  public ResponseEntity<HydraRun> getHydraRunById(@RequestParam("id") Integer id) {
+    return setResponse(hydraRunRepo.getHydraRunById(id));
   }
 
-  @GetMapping(value="/HydraRun/create", params={"userName", "productVersion", "buildId", "svnRepository", "svnRevision", "javaVersion", "javaVendor", "javaHome", "date", "regressionType", "comments", "buildLocation"})
-  public HydraRun createHydraRun(
+  @GetMapping(value="/HydraRun/create", params={"userName", "productVersion", "buildId", "svnRepository", "svnRevision", "javaVersion", "javaVendor", "javaHome", "fullRegression", "regressionType", "comments", "buildLocation"})
+  public ResponseEntity<HydraRun> createHydraRun(
       @RequestParam("userName") String userName,
       @RequestParam("productVersion") String productVersion,
       @RequestParam("buildId") String buildId,
@@ -106,12 +136,12 @@ public class HydraDBServiceEndpoint implements HydraDBService {
       @RequestParam("javaVersion") String javaVersion,
       @RequestParam("javaVendor") String javaVendor,
       @RequestParam("javaHome") String javaHome,
-      @RequestParam("date") @DateTimeFormat(pattern="yyyy-MM-dd") Date date,
+      @RequestParam("fullRegression") Boolean fullRegression,
       @RequestParam("regressionType") Integer regressionType,
       @RequestParam("comments") String comments,
       @RequestParam("buildLocation") String buildLocation)
   {
-    return hydraRunRepo.createHydraRun(userName,
+    hydraRunRepo.createHydraRun(userName,
         productVersion,
         buildId,
         svnRepository,
@@ -119,14 +149,19 @@ public class HydraDBServiceEndpoint implements HydraDBService {
         javaVersion,
         javaVendor,
         javaHome,
-        date,
+        fullRegression,
         regressionType,
         comments,
         buildLocation);
+
+    List<HydraRun> hrl = hydraRunRepo.hydraRunSearch(userName, productVersion, buildId, svnRepository, svnRevision, javaVersion, javaVendor);
+
+    return setResponse(getRunFromList(hrl));
+
   }
 
   @GetMapping(value="/HydraRun/getSet", params={"list", "gemfireVersion", "jdk", "jdkVendor", "svnRevision", "branch", "buildUser"})
-  public Map<Integer, HydraRun> getHydraRunSet(
+  public ResponseEntity<Map<Integer, HydraRun>> getHydraRunSet(
       @RequestParam("list") List<Integer> list,
       @RequestParam("gemfireVersion") String gemfireVersion,
       @RequestParam("jdk") String jdk,
@@ -135,20 +170,29 @@ public class HydraDBServiceEndpoint implements HydraDBService {
       @RequestParam("branch") String branch,
       @RequestParam("buildUser") String buildUser)
   {
-    return hydraRunRepo.getHydraRunSet(
+    return setResponse(hydraRunRepo.getHydraRunSet(
             list,
             gemfireVersion,
             jdk,
             jdkVendor,
             svnRevision,
             branch,
-            buildUser);
+            buildUser));
   }
 
   @Override
-  public List<Integer> getHydraRunsForBatteryTest(int id, int numRuns)
+  public ResponseEntity<List<Integer>> getHydraRunsForBatteryTest(int id, int numRuns)
   {
-    return null;
+    return setResponse(hydraRunRepo.getHydraRunsForBatteryTest(id, numRuns));
+  }
+
+  @Override
+  public ResponseEntity<List<HydraRun>> hydraRunSearch(String userName, String productVersion, String buildId,
+                                 String svnRepository, String svnRevision, String javaVersion,
+                                 String javaVendor)
+  {
+    return setResponse(hydraRunRepo.hydraRunSearch(userName, productVersion, buildId,
+        svnRepository, svnRevision, javaVersion, javaVendor));
   }
 
   /* HydraTest methods */
@@ -257,7 +301,7 @@ public class HydraDBServiceEndpoint implements HydraDBService {
 
 
   @GetMapping(value="/HydraTestsuiteDetail/create", params={"date", "elapsedTime", "diskUsage", "localConf", "hydraTestsuiteId", "hydraRunId", "hostId", "comment", "artifactLocation"})
-  public Integer createHydraTestsuiteDetail(@RequestParam("date") Date date,
+  public HydraTestsuiteDetail createHydraTestsuiteDetail(@RequestParam("date") Date date,
                                      @RequestParam("elapsedTime") String elapsedTime,
                                      @RequestParam("diskUsage") String diskUsage,
                                      @RequestParam("localConf") String localConf,
@@ -267,15 +311,16 @@ public class HydraDBServiceEndpoint implements HydraDBService {
                                      @RequestParam("comment") String comment,
                                      @RequestParam("artifactLocation") String artifactLocation)
   {
-    return hydraTestsuiteDetailRepo.createHydraTestsuiteDetail(date,
-                                                              elapsedTime,
-                                                              diskUsage,
-                                                              localConf,
-                                                              hydraTestsuiteId,
-                                                              hydraRunId,
-                                                              hostId,
-                                                              comment,
-                                                              artifactLocation);
+    hydraTestsuiteDetailRepo.createHydraTestsuiteDetail(date,
+                                                        elapsedTime,
+                                                        diskUsage,
+                                                        localConf,
+                                                        hydraTestsuiteId,
+                                                        hydraRunId,
+                                                        hostId,
+                                                        comment,
+                                                        artifactLocation);
+    return new HydraTestsuiteDetail();  // TODO: need to search to find new row
   }
 
   /* Hydra History methods */
@@ -308,11 +353,9 @@ public class HydraDBServiceEndpoint implements HydraDBService {
         .queryParam("comments", "")
         .queryParam("buildLocation", "/var/vcap/data/gemfire-build").toUriString();
 
-    System.out.println("URI=" + myURI);
+    log.info("URI=" + myURI);
 
     HydraRun sajObj = restTemplate.getForObject(myURI, HydraRun.class);
-
-    System.out.println("SAJCREATE: " + sajObj.getId());
 
     return sajObj;
   }

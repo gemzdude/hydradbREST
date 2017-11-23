@@ -27,6 +27,7 @@ import javax.sql.DataSource;
 //)
 public class HydraConfig {
 
+
   @Autowired
   private Environment env;
 
@@ -69,6 +70,21 @@ public class HydraConfig {
 //    return hydraJdbcTemplate;
 //  }
 /* ***************************************** */
+
+
+//  @Bean
+//  public String hydraEndpointUrl() {
+//    Map<String, String> sysenv = System.getenv();
+//    String sysport = sysenv.get("local.server.port");
+//
+//    String host = env.getRequiredProperty("spring.HydraEndpoint.host");
+//    String endpoint = env.getRequiredProperty("spring.HydraEndpoint.endpoint");
+//    UriComponents uriComponents = UriComponentsBuilder.newInstance()
+//        .scheme("http").host(host).port(port).path(endpoint).build().encode();
+//    return uriComponents.toUriString();
+//  }
+
+
   @Bean
   @Primary
   @ConfigurationProperties("spring.hydraDataSource")
@@ -96,4 +112,13 @@ public class HydraConfig {
     return hydraJdbcTemplate;
   }
 
+  @Bean
+  public HydraUrlFactory hydraUrlFactory() {
+    return new HydraUrlFactory();
+  }
+
+  @Bean
+  public HydraDBClient hydraDBClient() {
+    return new HydraDBClientService();
+  }
 }
