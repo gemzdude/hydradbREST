@@ -8,6 +8,9 @@ hydradbREST uses gradle to build. To compile, run './gradlew build'
 
 ## Generating HydraDB java classes
 
+Note that @Entity, @Id, @Colummn, @GeneratedValue type annotations
+are not generated and will need to be added manually as needed
+
 Follow install instructions for the code generators
 
   spring-data-jdbc-codegen

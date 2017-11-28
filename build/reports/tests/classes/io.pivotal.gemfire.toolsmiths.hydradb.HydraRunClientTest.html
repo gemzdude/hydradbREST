@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class io.pivotal.gemfire.toolsmiths.hydradb.HydraRunClientTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class io.pivotal.gemfire.toolsmiths.hydradb.HydraRunClientTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/io.pivotal.gemfire.toolsmiths.hydradb.html">io.pivotal.gemfire.toolsmiths.hydradb</a> &gt; HydraRunClientTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">3</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.363s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">canFetchHost1</td>
+<td>0.101s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">canFetchRun1200</td>
+<td>0.158s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">createHost</td>
+<td>0.104s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2017-11-28 10:26:56.919  INFO 7150 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [io.pivotal.gemfire.toolsmiths.hydradb.HydraRunClientTest], using SpringBootContextLoader
+2017-11-28 10:26:56.920  INFO 7150 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [io.pivotal.gemfire.toolsmiths.hydradb.HydraRunClientTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2017-11-28 10:26:56.920  INFO 7150 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [io.pivotal.gemfire.toolsmiths.hydradb.HydraRunClientTest]: HydraRunClientTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2017-11-28 10:26:56.922  INFO 7150 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration io.pivotal.gemfire.toolsmiths.hydradb.Main for test class io.pivotal.gemfire.toolsmiths.hydradb.HydraRunClientTest
+2017-11-28 10:26:56.922  INFO 7150 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@3c126018, org.springframework.test.context.support.DirtiesContextTestExecutionListener@7b512914, com.github.springtestdbunit.DbUnitTestExecutionListener@649fd105]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.5.8.RELEASE)
+
+2017-11-28 10:26:56.950  INFO 7150 --- [    Test worker] i.p.g.t.hydradb.HydraRunClientTest       : Starting HydraRunClientTest on callisto with PID 7150 (started by pivotal in /Users/pivotal/workspace/hydradbREST)
+2017-11-28 10:26:56.950  INFO 7150 --- [    Test worker] i.p.g.t.hydradb.HydraRunClientTest       : No active profile set, falling back to default profiles: default
+2017-11-28 10:26:56.951  INFO 7150 --- [    Test worker] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@31333cac: startup date [Tue Nov 28 10:26:56 PST 2017]; root of context hierarchy
+2017-11-28 10:26:57.236  INFO 7150 --- [    Test worker] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 0 (http)
+2017-11-28 10:26:57.236  INFO 7150 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2017-11-28 10:26:57.237  INFO 7150 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.23
+2017-11-28 10:26:57.242  INFO 7150 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-11-28 10:26:57.242  INFO 7150 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 291 ms
+2017-11-28 10:26:57.275  INFO 7150 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-11-28 10:26:57.275  INFO 7150 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-11-28 10:26:57.364  INFO 7150 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-11-28 10:26:57.364  INFO 7150 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-11-28 10:26:57.367  INFO 7150 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.HSQLDialect
+2017-11-28 10:26:57.394  INFO 7150 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000227: Running hbm2ddl schema export
+Hibernate: drop table host if exists
+Hibernate: drop table hydra_run if exists
+Hibernate: drop table hydra_test if exists
+Hibernate: drop table hydra_test_detail if exists
+Hibernate: drop table hydra_testsuite if exists
+Hibernate: drop table hydra_testsuite_detail if exists
+Hibernate: create table host (id integer generated by default as identity (start with 1), name varchar(255), os_info varchar(255), os_type varchar(255), primary key (id))
+Hibernate: create table hydra_run (id integer generated by default as identity (start with 1), build_id varchar(255), build_location varchar(255), comments varchar(255), date DATE DEFAULT CURRENT_TIMESTAMP, full_regression boolean, java_home varchar(255), java_vendor varchar(255), java_version varchar(255), product_version varchar(255), regression_type integer, svn_repository varchar(255), svn_revision varchar(255), user_name varchar(255), primary key (id))
+Hibernate: create table hydra_test (id integer not null, conf varchar(255), full_test_spec varchar(255), hydra_testsuite varbinary(255), hydra_testsuite_id integer, primary key (id))
+Hibernate: create table hydra_test_detail (id integer not null, bug_number varchar(255), comment varchar(255), disk_usage varchar(255), elapsed_time varchar(255), error varchar(255), hydra_run varbinary(255), hydra_run_id integer, hydra_test varbinary(255), hydra_test_id integer, hydra_testsuite_detail varbinary(255), hydra_testsuite_detail_id integer, status varchar(255), tags varchar(255), primary key (id))
+Hibernate: create table hydra_testsuite (id integer not null, name varchar(255), primary key (id))
+Hibernate: create table hydra_testsuite_detail (id integer not null, artifact_location varchar(255), comment varchar(255), date timestamp, disk_usage varchar(255), elapsed_time varchar(255), failcount integer, hangcount integer, host varbinary(255), host_id integer, hydra_run varbinary(255), hydra_run_id integer, hydra_testsuite varbinary(255), hydra_testsuite_id integer, local_conf varchar(255), passcount integer, primary key (id))
+2017-11-28 10:26:57.397  INFO 7150 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000230: Schema export complete
+2017-11-28 10:26:57.399  INFO 7150 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-11-28 10:26:57.483  INFO 7150 --- [    Test worker] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2017-11-28 10:26:57.560  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/host],methods=[GET],params=[name]}&quot; onto private java.util.List&lt;io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.Host&gt; io.pivotal.gemfire.toolsmiths.hydradb.HostEndpoint.getHost(java.lang.String)
+2017-11-28 10:26:57.560  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/host],methods=[GET],params=[id]}&quot; onto private io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.Host io.pivotal.gemfire.toolsmiths.hydradb.HostEndpoint.getHost(java.lang.Integer)
+2017-11-28 10:26:57.564  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/Host/create],methods=[GET],produces=[application/json]}&quot; onto public org.springframework.http.ResponseEntity&lt;io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.Host&gt; io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.createHost(javax.servlet.http.HttpServletRequest,java.lang.String,java.lang.String,java.lang.String)
+2017-11-28 10:26:57.564  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/Host/getByName],methods=[GET],params=[name],produces=[application/json]}&quot; onto public org.springframework.http.ResponseEntity&lt;io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.Host&gt; io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHostByName(java.lang.String)
+2017-11-28 10:26:57.564  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/Host/getById],methods=[GET],params=[id],produces=[application/json]}&quot; onto public org.springframework.http.ResponseEntity&lt;io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.Host&gt; io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHostById(java.lang.Integer)
+2017-11-28 10:26:57.564  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/Host/max],methods=[GET],produces=[application/json]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.lang.Integer&gt; io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.maxHostId()
+2017-11-28 10:26:57.564  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraRun/max],methods=[GET],produces=[application/json]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.lang.Integer&gt; io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.maxHydraRunId()
+2017-11-28 10:26:57.565  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraRun/getById],methods=[GET],params=[id],produces=[application/json]}&quot; onto public org.springframework.http.ResponseEntity&lt;io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraRun&gt; io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraRunById(java.lang.Integer)
+2017-11-28 10:26:57.565  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraRun/create],methods=[GET],params=[userName &amp;&amp; productVersion &amp;&amp; buildId &amp;&amp; svnRepository &amp;&amp; svnRevision &amp;&amp; javaVersion &amp;&amp; javaVendor &amp;&amp; javaHome &amp;&amp; fullRegression &amp;&amp; regressionType &amp;&amp; comments &amp;&amp; buildLocation],produces=[application/json]}&quot; onto public org.springframework.http.ResponseEntity&lt;io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraRun&gt; io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.createHydraRun(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.Boolean,java.lang.Integer,java.lang.String,java.lang.String)
+2017-11-28 10:26:57.565  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraRun/getSet],methods=[GET],params=[list &amp;&amp; gemfireVersion &amp;&amp; jdk &amp;&amp; jdkVendor &amp;&amp; svnRevision &amp;&amp; branch &amp;&amp; buildUser],produces=[application/json]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.util.Map&lt;java.lang.Integer, io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraRun&gt;&gt; io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraRunSet(java.util.List&lt;java.lang.Integer&gt;,java.lang.String,java.lang.String,java.lang.String,int,java.lang.String,java.lang.String)
+2017-11-28 10:26:57.565  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTest/getById],methods=[GET],params=[hydraTestsuiteId],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTest io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraTestById(java.lang.Integer)
+2017-11-28 10:26:57.565  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTest/getId],methods=[GET],params=[fullTestSpec &amp;&amp; hydraTestsuiteId],produces=[application/json]}&quot; onto public java.lang.Integer io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraTestId(java.lang.String,java.lang.Integer)
+2017-11-28 10:26:57.565  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTest/create],methods=[GET],params=[conf &amp;&amp; fullTestSpec &amp;&amp; hydraTestsuiteId],produces=[application/json]}&quot; onto public java.lang.Integer io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.createHydraTest(java.lang.String,java.lang.String,java.lang.Integer)
+2017-11-28 10:26:57.565  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTest/getByTestSpecAndTestsuiteId],methods=[GET],params=[conf &amp;&amp; fullTestSpec &amp;&amp; hydraTestsuiteId],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTest io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraTestByFullTestSpecAndHydraTestsuiteId(java.lang.String,java.lang.Integer)
+2017-11-28 10:26:57.566  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTestDetail/create],methods=[GET],params=[elapsedTime &amp;&amp; diskStr &amp;&amp; status &amp;&amp; error &amp;&amp; bugNumber &amp;&amp; testId &amp;&amp; testsuiteDetailId &amp;&amp; runId &amp;&amp; comment &amp;&amp; tags],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTestDetail io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.createHydraTestDetail(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,long,long,int,java.lang.String,java.lang.String)
+2017-11-28 10:26:57.566  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTestDetail/get],methods=[GET],params=[testId &amp;&amp; testsuiteDetailId &amp;&amp; runId],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTestDetail io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraTestDetail(long,long,int)
+2017-11-28 10:26:57.566  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTestsuite/getInfo],methods=[GET],params=[suiteId],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.TestSuiteInfo io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getTestSuiteInfo(long)
+2017-11-28 10:26:57.566  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTestsuite/getInfoById],methods=[GET],params=[id],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.IdAndName io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraTestsuiteIdAndNameById(java.lang.Integer)
+2017-11-28 10:26:57.566  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTestsuite/getInfoByName],methods=[GET],params=[name],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.IdAndName io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraTestsuiteIdAndNameByName(java.lang.String)
+2017-11-28 10:26:57.566  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTestsuiteDetail/getById],methods=[GET],params=[hydraTestsuiteId],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTestsuiteDetail io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraTestsuiteDetailById(java.lang.Integer)
+2017-11-28 10:26:57.566  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTestsuiteDetail/get],methods=[GET],params=[hydraTestsuiteId &amp;&amp; hydraRunId &amp;&amp; hostId &amp;&amp; date],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTestsuiteDetail io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraTestsuiteDetail(java.lang.Integer,java.lang.Integer,java.lang.Integer,java.util.Date)
+2017-11-28 10:26:57.566  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTestsuiteDetail/create],methods=[GET],params=[date &amp;&amp; elapsedTime &amp;&amp; diskUsage &amp;&amp; localConf &amp;&amp; hydraTestsuiteId &amp;&amp; hydraRunId &amp;&amp; hostId &amp;&amp; comment &amp;&amp; artifactLocation],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTestsuiteDetail io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.createHydraTestsuiteDetail(java.util.Date,java.lang.String,java.lang.String,java.lang.String,java.lang.Integer,java.lang.Integer,java.lang.Integer,java.lang.String,java.lang.String)
+2017-11-28 10:26:57.566  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTestsuiteDetail/create],methods=[GET],params=[id &amp;&amp; hydraRunList],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.HydraHistory io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraHistoryForBatteryTest(int,java.util.Map&lt;java.lang.Integer, io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraRun&gt;)
+2017-11-28 10:26:57.567  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/sajtest],methods=[GET],produces=[application/json]}&quot; onto private io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraRun io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.doit(org.springframework.web.client.RestTemplate)
+2017-11-28 10:26:57.568  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/error]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.util.Map&lt;java.lang.String, java.lang.Object&gt;&gt; org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-11-28 10:26:57.568  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/error],produces=[text/html]}&quot; onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-11-28 10:26:57.599  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@31333cac: startup date [Tue Nov 28 10:26:56 PST 2017]; root of context hierarchy
+2017-11-28 10:26:57.714  INFO 7150 --- [    Test worker] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 51834 (http)
+2017-11-28 10:26:57.715  INFO 7150 --- [    Test worker] i.p.g.t.hydradb.HydraRunClientTest       : Started HydraRunClientTest in 0.789 seconds (JVM running for 12.239)
+2017-11-28 10:26:57.731  WARN 7150 --- [    Test worker] o.dbunit.dataset.AbstractTableMetaData   : Potential problem found: The configured data type factory 'class org.dbunit.dataset.datatype.DefaultDataTypeFactory' might cause problems with the current database 'HSQL Database Engine' (e.g. some datatypes may not be supported properly). In rare cases you might see this message because the list of supported database products is incomplete (list=[derby]). If so please request a java-class update via the forums.If you are using your own IDataTypeFactory extending DefaultDataTypeFactory, ensure that you override getValidDbProducts() to specify the supported database products.
+2017-11-28 10:26:57.773  INFO 7150 --- [o-auto-7-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-11-28 10:26:57.773  INFO 7150 --- [o-auto-7-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2017-11-28 10:26:57.783  INFO 7150 --- [o-auto-7-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 10 ms
+Hibernate: select hydrarun0_.id as id1_1_, hydrarun0_.build_id as build_id2_1_, hydrarun0_.build_location as build_lo3_1_, hydrarun0_.comments as comments4_1_, hydrarun0_.date as date5_1_, hydrarun0_.full_regression as full_reg6_1_, hydrarun0_.java_home as java_hom7_1_, hydrarun0_.java_vendor as java_ven8_1_, hydrarun0_.java_version as java_ver9_1_, hydrarun0_.product_version as product10_1_, hydrarun0_.regression_type as regress11_1_, hydrarun0_.svn_repository as svn_rep12_1_, hydrarun0_.svn_revision as svn_rev13_1_, hydrarun0_.user_name as user_na14_1_ from hydra_run hydrarun0_ where hydrarun0_.id=?
+2017-11-28 10:26:57.812  INFO 7150 --- [    Test worker] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@31333cac: startup date [Tue Nov 28 10:26:56 PST 2017]; root of context hierarchy
+2017-11-28 10:26:57.814  INFO 7150 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2017-11-28 10:26:57.814  INFO 7150 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000227: Running hbm2ddl schema export
+Hibernate: drop table host if exists
+Hibernate: drop table hydra_run if exists
+Hibernate: drop table hydra_test if exists
+Hibernate: drop table hydra_test_detail if exists
+Hibernate: drop table hydra_testsuite if exists
+Hibernate: drop table hydra_testsuite_detail if exists
+2017-11-28 10:26:57.815  INFO 7150 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000230: Schema export complete
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.5.8.RELEASE)
+
+2017-11-28 10:26:57.903  INFO 7150 --- [    Test worker] i.p.g.t.hydradb.HydraRunClientTest       : Starting HydraRunClientTest on callisto with PID 7150 (started by pivotal in /Users/pivotal/workspace/hydradbREST)
+2017-11-28 10:26:57.903  INFO 7150 --- [    Test worker] i.p.g.t.hydradb.HydraRunClientTest       : No active profile set, falling back to default profiles: default
+2017-11-28 10:26:57.904  INFO 7150 --- [    Test worker] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4cd5cc95: startup date [Tue Nov 28 10:26:57 PST 2017]; root of context hierarchy
+2017-11-28 10:26:58.265  INFO 7150 --- [    Test worker] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 0 (http)
+2017-11-28 10:26:58.266  INFO 7150 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2017-11-28 10:26:58.266  INFO 7150 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.23
+2017-11-28 10:26:58.271  INFO 7150 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-11-28 10:26:58.272  INFO 7150 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 368 ms
+2017-11-28 10:26:58.304  INFO 7150 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-11-28 10:26:58.304  INFO 7150 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-11-28 10:26:58.398  INFO 7150 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-11-28 10:26:58.399  INFO 7150 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-11-28 10:26:58.401  INFO 7150 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.HSQLDialect
+2017-11-28 10:26:58.431  INFO 7150 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000227: Running hbm2ddl schema export
+Hibernate: drop table host if exists
+Hibernate: drop table hydra_run if exists
+Hibernate: drop table hydra_test if exists
+Hibernate: drop table hydra_test_detail if exists
+Hibernate: drop table hydra_testsuite if exists
+Hibernate: drop table hydra_testsuite_detail if exists
+Hibernate: create table host (id integer generated by default as identity (start with 1), name varchar(255), os_info varchar(255), os_type varchar(255), primary key (id))
+Hibernate: create table hydra_run (id integer generated by default as identity (start with 1), build_id varchar(255), build_location varchar(255), comments varchar(255), date DATE DEFAULT CURRENT_TIMESTAMP, full_regression boolean, java_home varchar(255), java_vendor varchar(255), java_version varchar(255), product_version varchar(255), regression_type integer, svn_repository varchar(255), svn_revision varchar(255), user_name varchar(255), primary key (id))
+Hibernate: create table hydra_test (id integer not null, conf varchar(255), full_test_spec varchar(255), hydra_testsuite varbinary(255), hydra_testsuite_id integer, primary key (id))
+Hibernate: create table hydra_test_detail (id integer not null, bug_number varchar(255), comment varchar(255), disk_usage varchar(255), elapsed_time varchar(255), error varchar(255), hydra_run varbinary(255), hydra_run_id integer, hydra_test varbinary(255), hydra_test_id integer, hydra_testsuite_detail varbinary(255), hydra_testsuite_detail_id integer, status varchar(255), tags varchar(255), primary key (id))
+Hibernate: create table hydra_testsuite (id integer not null, name varchar(255), primary key (id))
+Hibernate: create table hydra_testsuite_detail (id integer not null, artifact_location varchar(255), comment varchar(255), date timestamp, disk_usage varchar(255), elapsed_time varchar(255), failcount integer, hangcount integer, host varbinary(255), host_id integer, hydra_run varbinary(255), hydra_run_id integer, hydra_testsuite varbinary(255), hydra_testsuite_id integer, local_conf varchar(255), passcount integer, primary key (id))
+2017-11-28 10:26:58.434  INFO 7150 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000230: Schema export complete
+2017-11-28 10:26:58.436  INFO 7150 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-11-28 10:26:58.526  INFO 7150 --- [    Test worker] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2017-11-28 10:26:58.604  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/host],methods=[GET],params=[name]}&quot; onto private java.util.List&lt;io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.Host&gt; io.pivotal.gemfire.toolsmiths.hydradb.HostEndpoint.getHost(java.lang.String)
+2017-11-28 10:26:58.604  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/host],methods=[GET],params=[id]}&quot; onto private io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.Host io.pivotal.gemfire.toolsmiths.hydradb.HostEndpoint.getHost(java.lang.Integer)
+2017-11-28 10:26:58.608  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/Host/create],methods=[GET],produces=[application/json]}&quot; onto public org.springframework.http.ResponseEntity&lt;io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.Host&gt; io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.createHost(javax.servlet.http.HttpServletRequest,java.lang.String,java.lang.String,java.lang.String)
+2017-11-28 10:26:58.608  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/Host/getByName],methods=[GET],params=[name],produces=[application/json]}&quot; onto public org.springframework.http.ResponseEntity&lt;io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.Host&gt; io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHostByName(java.lang.String)
+2017-11-28 10:26:58.608  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/Host/getById],methods=[GET],params=[id],produces=[application/json]}&quot; onto public org.springframework.http.ResponseEntity&lt;io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.Host&gt; io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHostById(java.lang.Integer)
+2017-11-28 10:26:58.608  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/Host/max],methods=[GET],produces=[application/json]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.lang.Integer&gt; io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.maxHostId()
+2017-11-28 10:26:58.608  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraRun/max],methods=[GET],produces=[application/json]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.lang.Integer&gt; io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.maxHydraRunId()
+2017-11-28 10:26:58.608  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraRun/getById],methods=[GET],params=[id],produces=[application/json]}&quot; onto public org.springframework.http.ResponseEntity&lt;io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraRun&gt; io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraRunById(java.lang.Integer)
+2017-11-28 10:26:58.609  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraRun/create],methods=[GET],params=[userName &amp;&amp; productVersion &amp;&amp; buildId &amp;&amp; svnRepository &amp;&amp; svnRevision &amp;&amp; javaVersion &amp;&amp; javaVendor &amp;&amp; javaHome &amp;&amp; fullRegression &amp;&amp; regressionType &amp;&amp; comments &amp;&amp; buildLocation],produces=[application/json]}&quot; onto public org.springframework.http.ResponseEntity&lt;io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraRun&gt; io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.createHydraRun(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.Boolean,java.lang.Integer,java.lang.String,java.lang.String)
+2017-11-28 10:26:58.609  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraRun/getSet],methods=[GET],params=[list &amp;&amp; gemfireVersion &amp;&amp; jdk &amp;&amp; jdkVendor &amp;&amp; svnRevision &amp;&amp; branch &amp;&amp; buildUser],produces=[application/json]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.util.Map&lt;java.lang.Integer, io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraRun&gt;&gt; io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraRunSet(java.util.List&lt;java.lang.Integer&gt;,java.lang.String,java.lang.String,java.lang.String,int,java.lang.String,java.lang.String)
+2017-11-28 10:26:58.609  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTest/getById],methods=[GET],params=[hydraTestsuiteId],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTest io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraTestById(java.lang.Integer)
+2017-11-28 10:26:58.609  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTest/getId],methods=[GET],params=[fullTestSpec &amp;&amp; hydraTestsuiteId],produces=[application/json]}&quot; onto public java.lang.Integer io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraTestId(java.lang.String,java.lang.Integer)
+2017-11-28 10:26:58.609  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTest/create],methods=[GET],params=[conf &amp;&amp; fullTestSpec &amp;&amp; hydraTestsuiteId],produces=[application/json]}&quot; onto public java.lang.Integer io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.createHydraTest(java.lang.String,java.lang.String,java.lang.Integer)
+2017-11-28 10:26:58.610  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTest/getByTestSpecAndTestsuiteId],methods=[GET],params=[conf &amp;&amp; fullTestSpec &amp;&amp; hydraTestsuiteId],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTest io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraTestByFullTestSpecAndHydraTestsuiteId(java.lang.String,java.lang.Integer)
+2017-11-28 10:26:58.610  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTestDetail/create],methods=[GET],params=[elapsedTime &amp;&amp; diskStr &amp;&amp; status &amp;&amp; error &amp;&amp; bugNumber &amp;&amp; testId &amp;&amp; testsuiteDetailId &amp;&amp; runId &amp;&amp; comment &amp;&amp; tags],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTestDetail io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.createHydraTestDetail(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,long,long,int,java.lang.String,java.lang.String)
+2017-11-28 10:26:58.610  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTestDetail/get],methods=[GET],params=[testId &amp;&amp; testsuiteDetailId &amp;&amp; runId],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTestDetail io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraTestDetail(long,long,int)
+2017-11-28 10:26:58.610  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTestsuite/getInfo],methods=[GET],params=[suiteId],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.TestSuiteInfo io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getTestSuiteInfo(long)
+2017-11-28 10:26:58.610  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTestsuite/getInfoById],methods=[GET],params=[id],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.IdAndName io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraTestsuiteIdAndNameById(java.lang.Integer)
+2017-11-28 10:26:58.610  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTestsuite/getInfoByName],methods=[GET],params=[name],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.IdAndName io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraTestsuiteIdAndNameByName(java.lang.String)
+2017-11-28 10:26:58.610  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTestsuiteDetail/getById],methods=[GET],params=[hydraTestsuiteId],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTestsuiteDetail io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraTestsuiteDetailById(java.lang.Integer)
+2017-11-28 10:26:58.610  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTestsuiteDetail/get],methods=[GET],params=[hydraTestsuiteId &amp;&amp; hydraRunId &amp;&amp; hostId &amp;&amp; date],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTestsuiteDetail io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraTestsuiteDetail(java.lang.Integer,java.lang.Integer,java.lang.Integer,java.util.Date)
+2017-11-28 10:26:58.611  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTestsuiteDetail/create],methods=[GET],params=[date &amp;&amp; elapsedTime &amp;&amp; diskUsage &amp;&amp; localConf &amp;&amp; hydraTestsuiteId &amp;&amp; hydraRunId &amp;&amp; hostId &amp;&amp; comment &amp;&amp; artifactLocation],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTestsuiteDetail io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.createHydraTestsuiteDetail(java.util.Date,java.lang.String,java.lang.String,java.lang.String,java.lang.Integer,java.lang.Integer,java.lang.Integer,java.lang.String,java.lang.String)
+2017-11-28 10:26:58.611  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTestsuiteDetail/create],methods=[GET],params=[id &amp;&amp; hydraRunList],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.HydraHistory io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraHistoryForBatteryTest(int,java.util.Map&lt;java.lang.Integer, io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraRun&gt;)
+2017-11-28 10:26:58.611  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/sajtest],methods=[GET],produces=[application/json]}&quot; onto private io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraRun io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.doit(org.springframework.web.client.RestTemplate)
+2017-11-28 10:26:58.613  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/error]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.util.Map&lt;java.lang.String, java.lang.Object&gt;&gt; org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-11-28 10:26:58.613  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/error],produces=[text/html]}&quot; onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-11-28 10:26:58.644  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4cd5cc95: startup date [Tue Nov 28 10:26:57 PST 2017]; root of context hierarchy
+2017-11-28 10:26:58.782  INFO 7150 --- [    Test worker] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 51841 (http)
+2017-11-28 10:26:58.784  INFO 7150 --- [    Test worker] i.p.g.t.hydradb.HydraRunClientTest       : Started HydraRunClientTest in 0.905 seconds (JVM running for 13.308)
+2017-11-28 10:26:58.801  WARN 7150 --- [    Test worker] o.dbunit.dataset.AbstractTableMetaData   : Potential problem found: The configured data type factory 'class org.dbunit.dataset.datatype.DefaultDataTypeFactory' might cause problems with the current database 'HSQL Database Engine' (e.g. some datatypes may not be supported properly). In rare cases you might see this message because the list of supported database products is incomplete (list=[derby]). If so please request a java-class update via the forums.If you are using your own IDataTypeFactory extending DefaultDataTypeFactory, ensure that you override getValidDbProducts() to specify the supported database products.
+2017-11-28 10:26:58.806  INFO 7150 --- [o-auto-8-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-11-28 10:26:58.806  INFO 7150 --- [o-auto-8-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2017-11-28 10:26:58.816  INFO 7150 --- [o-auto-8-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 10 ms
+Hibernate: select host0_.id as id1_0_, host0_.name as name2_0_, host0_.os_info as os_info3_0_, host0_.os_type as os_type4_0_ from host host0_ where host0_.id=?
+2017-11-28 10:26:58.825  INFO 7150 --- [    Test worker] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4cd5cc95: startup date [Tue Nov 28 10:26:57 PST 2017]; root of context hierarchy
+2017-11-28 10:26:58.827  INFO 7150 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2017-11-28 10:26:58.827  INFO 7150 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000227: Running hbm2ddl schema export
+Hibernate: drop table host if exists
+Hibernate: drop table hydra_run if exists
+Hibernate: drop table hydra_test if exists
+Hibernate: drop table hydra_test_detail if exists
+Hibernate: drop table hydra_testsuite if exists
+Hibernate: drop table hydra_testsuite_detail if exists
+2017-11-28 10:26:58.828  INFO 7150 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000230: Schema export complete
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.5.8.RELEASE)
+
+2017-11-28 10:26:58.911  INFO 7150 --- [    Test worker] i.p.g.t.hydradb.HydraRunClientTest       : Starting HydraRunClientTest on callisto with PID 7150 (started by pivotal in /Users/pivotal/workspace/hydradbREST)
+2017-11-28 10:26:58.911  INFO 7150 --- [    Test worker] i.p.g.t.hydradb.HydraRunClientTest       : No active profile set, falling back to default profiles: default
+2017-11-28 10:26:58.913  INFO 7150 --- [    Test worker] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@16ae7cb7: startup date [Tue Nov 28 10:26:58 PST 2017]; root of context hierarchy
+2017-11-28 10:26:59.295  INFO 7150 --- [    Test worker] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 0 (http)
+2017-11-28 10:26:59.295  INFO 7150 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2017-11-28 10:26:59.295  INFO 7150 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.23
+2017-11-28 10:26:59.300  INFO 7150 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-11-28 10:26:59.300  INFO 7150 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 387 ms
+2017-11-28 10:26:59.335  INFO 7150 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-11-28 10:26:59.336  INFO 7150 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-11-28 10:26:59.444  INFO 7150 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-11-28 10:26:59.444  INFO 7150 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-11-28 10:26:59.447  INFO 7150 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.HSQLDialect
+2017-11-28 10:26:59.472  INFO 7150 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000227: Running hbm2ddl schema export
+Hibernate: drop table host if exists
+Hibernate: drop table hydra_run if exists
+Hibernate: drop table hydra_test if exists
+Hibernate: drop table hydra_test_detail if exists
+Hibernate: drop table hydra_testsuite if exists
+Hibernate: drop table hydra_testsuite_detail if exists
+Hibernate: create table host (id integer generated by default as identity (start with 1), name varchar(255), os_info varchar(255), os_type varchar(255), primary key (id))
+Hibernate: create table hydra_run (id integer generated by default as identity (start with 1), build_id varchar(255), build_location varchar(255), comments varchar(255), date DATE DEFAULT CURRENT_TIMESTAMP, full_regression boolean, java_home varchar(255), java_vendor varchar(255), java_version varchar(255), product_version varchar(255), regression_type integer, svn_repository varchar(255), svn_revision varchar(255), user_name varchar(255), primary key (id))
+Hibernate: create table hydra_test (id integer not null, conf varchar(255), full_test_spec varchar(255), hydra_testsuite varbinary(255), hydra_testsuite_id integer, primary key (id))
+Hibernate: create table hydra_test_detail (id integer not null, bug_number varchar(255), comment varchar(255), disk_usage varchar(255), elapsed_time varchar(255), error varchar(255), hydra_run varbinary(255), hydra_run_id integer, hydra_test varbinary(255), hydra_test_id integer, hydra_testsuite_detail varbinary(255), hydra_testsuite_detail_id integer, status varchar(255), tags varchar(255), primary key (id))
+Hibernate: create table hydra_testsuite (id integer not null, name varchar(255), primary key (id))
+Hibernate: create table hydra_testsuite_detail (id integer not null, artifact_location varchar(255), comment varchar(255), date timestamp, disk_usage varchar(255), elapsed_time varchar(255), failcount integer, hangcount integer, host varbinary(255), host_id integer, hydra_run varbinary(255), hydra_run_id integer, hydra_testsuite varbinary(255), hydra_testsuite_id integer, local_conf varchar(255), passcount integer, primary key (id))
+2017-11-28 10:26:59.475  INFO 7150 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000230: Schema export complete
+2017-11-28 10:26:59.477  INFO 7150 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-11-28 10:26:59.555  INFO 7150 --- [    Test worker] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2017-11-28 10:26:59.627  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/host],methods=[GET],params=[name]}&quot; onto private java.util.List&lt;io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.Host&gt; io.pivotal.gemfire.toolsmiths.hydradb.HostEndpoint.getHost(java.lang.String)
+2017-11-28 10:26:59.627  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/host],methods=[GET],params=[id]}&quot; onto private io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.Host io.pivotal.gemfire.toolsmiths.hydradb.HostEndpoint.getHost(java.lang.Integer)
+2017-11-28 10:26:59.631  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/Host/create],methods=[GET],produces=[application/json]}&quot; onto public org.springframework.http.ResponseEntity&lt;io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.Host&gt; io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.createHost(javax.servlet.http.HttpServletRequest,java.lang.String,java.lang.String,java.lang.String)
+2017-11-28 10:26:59.631  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/Host/getByName],methods=[GET],params=[name],produces=[application/json]}&quot; onto public org.springframework.http.ResponseEntity&lt;io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.Host&gt; io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHostByName(java.lang.String)
+2017-11-28 10:26:59.631  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/Host/getById],methods=[GET],params=[id],produces=[application/json]}&quot; onto public org.springframework.http.ResponseEntity&lt;io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.Host&gt; io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHostById(java.lang.Integer)
+2017-11-28 10:26:59.631  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/Host/max],methods=[GET],produces=[application/json]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.lang.Integer&gt; io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.maxHostId()
+2017-11-28 10:26:59.631  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraRun/max],methods=[GET],produces=[application/json]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.lang.Integer&gt; io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.maxHydraRunId()
+2017-11-28 10:26:59.631  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraRun/getById],methods=[GET],params=[id],produces=[application/json]}&quot; onto public org.springframework.http.ResponseEntity&lt;io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraRun&gt; io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraRunById(java.lang.Integer)
+2017-11-28 10:26:59.631  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraRun/create],methods=[GET],params=[userName &amp;&amp; productVersion &amp;&amp; buildId &amp;&amp; svnRepository &amp;&amp; svnRevision &amp;&amp; javaVersion &amp;&amp; javaVendor &amp;&amp; javaHome &amp;&amp; fullRegression &amp;&amp; regressionType &amp;&amp; comments &amp;&amp; buildLocation],produces=[application/json]}&quot; onto public org.springframework.http.ResponseEntity&lt;io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraRun&gt; io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.createHydraRun(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.Boolean,java.lang.Integer,java.lang.String,java.lang.String)
+2017-11-28 10:26:59.632  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraRun/getSet],methods=[GET],params=[list &amp;&amp; gemfireVersion &amp;&amp; jdk &amp;&amp; jdkVendor &amp;&amp; svnRevision &amp;&amp; branch &amp;&amp; buildUser],produces=[application/json]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.util.Map&lt;java.lang.Integer, io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraRun&gt;&gt; io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraRunSet(java.util.List&lt;java.lang.Integer&gt;,java.lang.String,java.lang.String,java.lang.String,int,java.lang.String,java.lang.String)
+2017-11-28 10:26:59.632  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTest/getById],methods=[GET],params=[hydraTestsuiteId],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTest io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraTestById(java.lang.Integer)
+2017-11-28 10:26:59.632  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTest/getId],methods=[GET],params=[fullTestSpec &amp;&amp; hydraTestsuiteId],produces=[application/json]}&quot; onto public java.lang.Integer io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraTestId(java.lang.String,java.lang.Integer)
+2017-11-28 10:26:59.632  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTest/create],methods=[GET],params=[conf &amp;&amp; fullTestSpec &amp;&amp; hydraTestsuiteId],produces=[application/json]}&quot; onto public java.lang.Integer io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.createHydraTest(java.lang.String,java.lang.String,java.lang.Integer)
+2017-11-28 10:26:59.632  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTest/getByTestSpecAndTestsuiteId],methods=[GET],params=[conf &amp;&amp; fullTestSpec &amp;&amp; hydraTestsuiteId],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTest io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraTestByFullTestSpecAndHydraTestsuiteId(java.lang.String,java.lang.Integer)
+2017-11-28 10:26:59.632  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTestDetail/create],methods=[GET],params=[elapsedTime &amp;&amp; diskStr &amp;&amp; status &amp;&amp; error &amp;&amp; bugNumber &amp;&amp; testId &amp;&amp; testsuiteDetailId &amp;&amp; runId &amp;&amp; comment &amp;&amp; tags],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTestDetail io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.createHydraTestDetail(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,long,long,int,java.lang.String,java.lang.String)
+2017-11-28 10:26:59.632  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTestDetail/get],methods=[GET],params=[testId &amp;&amp; testsuiteDetailId &amp;&amp; runId],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTestDetail io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraTestDetail(long,long,int)
+2017-11-28 10:26:59.632  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTestsuite/getInfo],methods=[GET],params=[suiteId],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.TestSuiteInfo io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getTestSuiteInfo(long)
+2017-11-28 10:26:59.632  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTestsuite/getInfoById],methods=[GET],params=[id],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.IdAndName io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraTestsuiteIdAndNameById(java.lang.Integer)
+2017-11-28 10:26:59.632  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTestsuite/getInfoByName],methods=[GET],params=[name],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.IdAndName io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraTestsuiteIdAndNameByName(java.lang.String)
+2017-11-28 10:26:59.633  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTestsuiteDetail/getById],methods=[GET],params=[hydraTestsuiteId],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTestsuiteDetail io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraTestsuiteDetailById(java.lang.Integer)
+2017-11-28 10:26:59.633  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTestsuiteDetail/get],methods=[GET],params=[hydraTestsuiteId &amp;&amp; hydraRunId &amp;&amp; hostId &amp;&amp; date],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTestsuiteDetail io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraTestsuiteDetail(java.lang.Integer,java.lang.Integer,java.lang.Integer,java.util.Date)
+2017-11-28 10:26:59.633  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTestsuiteDetail/create],methods=[GET],params=[date &amp;&amp; elapsedTime &amp;&amp; diskUsage &amp;&amp; localConf &amp;&amp; hydraTestsuiteId &amp;&amp; hydraRunId &amp;&amp; hostId &amp;&amp; comment &amp;&amp; artifactLocation],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTestsuiteDetail io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.createHydraTestsuiteDetail(java.util.Date,java.lang.String,java.lang.String,java.lang.String,java.lang.Integer,java.lang.Integer,java.lang.Integer,java.lang.String,java.lang.String)
+2017-11-28 10:26:59.633  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/HydraTestsuiteDetail/create],methods=[GET],params=[id &amp;&amp; hydraRunList],produces=[application/json]}&quot; onto public io.pivotal.gemfire.toolsmiths.hydradb.HydraHistory io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.getHydraHistoryForBatteryTest(int,java.util.Map&lt;java.lang.Integer, io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraRun&gt;)
+2017-11-28 10:26:59.633  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/HydraDB/sajtest],methods=[GET],produces=[application/json]}&quot; onto private io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraRun io.pivotal.gemfire.toolsmiths.hydradb.HydraDBEndpointService.doit(org.springframework.web.client.RestTemplate)
+2017-11-28 10:26:59.634  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/error]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.util.Map&lt;java.lang.String, java.lang.Object&gt;&gt; org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-11-28 10:26:59.634  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/error],produces=[text/html]}&quot; onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-11-28 10:26:59.666  INFO 7150 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@16ae7cb7: startup date [Tue Nov 28 10:26:58 PST 2017]; root of context hierarchy
+2017-11-28 10:26:59.768  INFO 7150 --- [    Test worker] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 51848 (http)
+2017-11-28 10:26:59.769  INFO 7150 --- [    Test worker] i.p.g.t.hydradb.HydraRunClientTest       : Started HydraRunClientTest in 0.879 seconds (JVM running for 14.294)
+2017-11-28 10:26:59.775  INFO 7150 --- [o-auto-9-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-11-28 10:26:59.775  INFO 7150 --- [o-auto-9-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2017-11-28 10:26:59.783  INFO 7150 --- [o-auto-9-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 8 ms
+Hibernate: INSERT INTO Host(name, os_Type, os_Info) VALUES(?, ?, ?)
+Hibernate: select host0_.id as id1_0_, host0_.name as name2_0_, host0_.os_info as os_info3_0_, host0_.os_type as os_type4_0_ from host host0_ where host0_.name=?
+2017-11-28 10:26:59.796  WARN 7150 --- [    Test worker] o.dbunit.dataset.AbstractTableMetaData   : Potential problem found: The configured data type factory 'class org.dbunit.dataset.datatype.DefaultDataTypeFactory' might cause problems with the current database 'HSQL Database Engine' (e.g. some datatypes may not be supported properly). In rare cases you might see this message because the list of supported database products is incomplete (list=[derby]). If so please request a java-class update via the forums.If you are using your own IDataTypeFactory extending DefaultDataTypeFactory, ensure that you override getValidDbProducts() to specify the supported database products.
+2017-11-28 10:26:59.811  INFO 7150 --- [    Test worker] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@16ae7cb7: startup date [Tue Nov 28 10:26:58 PST 2017]; root of context hierarchy
+2017-11-28 10:26:59.812  INFO 7150 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2017-11-28 10:26:59.812  INFO 7150 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000227: Running hbm2ddl schema export
+Hibernate: drop table host if exists
+Hibernate: drop table hydra_run if exists
+Hibernate: drop table hydra_test if exists
+Hibernate: drop table hydra_test_detail if exists
+Hibernate: drop table hydra_testsuite if exists
+Hibernate: drop table hydra_testsuite_detail if exists
+2017-11-28 10:26:59.814  INFO 7150 --- [    Test worker] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000230: Schema export complete
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 2.13</a> at Nov 28, 2017 10:27:01 AM</p>
+</div>
+</div>
+</body>
+</html>

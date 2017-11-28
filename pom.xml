@@ -60,7 +60,7 @@
                             <goal>generatecode</goal>
                         </goals>
                         <configuration>
-                            <propertiesFile>src/main/resources/codegenerator.properties</propertiesFile>
+                            <propertiesFile>src/main/resources/config/codegenerator.properties</propertiesFile>
                         </configuration>
                     </execution>
                 </executions>
