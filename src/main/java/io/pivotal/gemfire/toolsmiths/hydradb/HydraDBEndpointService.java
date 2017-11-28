@@ -27,6 +27,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping(value = "/HydraDB", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -81,10 +82,10 @@ public class HydraDBEndpointService implements HydraDBService {
 
   /* Host methods */
 
-  @GetMapping(value="/Host/create", params={"name", "osType", "osInfo"})
-  public ResponseEntity<Host> createHost(@RequestParam("name") String name,
-                         @RequestParam("osType") String osType,
-                         @RequestParam("osInfo") String osInfo) {
+  @GetMapping(value="/Host/create")
+  public ResponseEntity<Host> createHost(HttpServletRequest req, @RequestParam("name") String name,
+                                         @RequestParam("osType") String osType,
+                                         @RequestParam("osInfo") String osInfo) {
     hostRepo.createHost(name, osType, osInfo);
     List<Host> hostList = hostRepo.getHostByName(name);
     return setResponse(getHostFromList(hostList));

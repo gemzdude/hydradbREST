@@ -1,0 +1,4 @@
+--2017-11-27 14:29:49--  http://localhost:50190/HydraDB/Host/create?name=newhost
+Resolving localhost... ::1, 127.0.0.1
+Connecting to localhost|::1|:50190... failed: Connection refused.
+Connecting to localhost|127.0.0.1|:50190... failed: Connection refused.

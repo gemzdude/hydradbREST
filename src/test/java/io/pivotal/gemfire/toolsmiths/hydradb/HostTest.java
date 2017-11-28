@@ -66,13 +66,56 @@ public class HostTest {
 
     Integer theId = 1;
     given().port(port).
-        param("id", theId).
+      param("id", theId).
     when().
+      get("/HydraDB/Host/getById?id={id}", theId).
+    then().
+      statusCode(HttpStatus.SC_OK).
+      body("name", Matchers.is("odin")).
+      body("id", Matchers.is(theId));
+  }
+
+  @Test
+  @DatabaseSetup(value="/hostData.xml")
+  public void hostNotFound() {
+
+//    RestAssured.defaultParser = Parser.JSON;
+
+    Integer theId = 9999;
+    given().port(port).
+        param("id", theId).
+        when().
         get("/HydraDB/Host/getById?id={id}", theId).
         then().
-        statusCode(HttpStatus.SC_OK).
-        body("name", Matchers.is("odin")).
-        body("id", Matchers.is(theId));
+        statusCode(HttpStatus.SC_NOT_FOUND);
+  }
+
+  /*
+  Passing a string when an int is expected returns bad request
+ */
+  @Test
+  public void badRequest() {
+    String theId = "notAint";
+    given().port(port).
+        param("id", theId).
+        when().
+        get("/HydraDB/Host/getById?id={id}", theId).
+        then().
+        statusCode(HttpStatus.SC_BAD_REQUEST);
+  }
+
+  /*
+  Requesting an unmapped URL returns not found
+  */
+  @Test
+  public void badRequest2() {
+    String theId = "notAint";
+    given().port(port).
+        param("id", theId).
+        when().
+        get("/HydraDB/Host/getBySomethingNotMapped?id={id}", theId).
+        then().
+        statusCode(HttpStatus.SC_NOT_FOUND);
   }
 
   @Test
@@ -83,13 +126,13 @@ public class HostTest {
 
     Integer theId = 3;
     given().port(port).
-        param("id", theId).
-        when().
-        get("/HydraDB/Host/getById?id={id}", theId).
-        then().
-        statusCode(HttpStatus.SC_OK).
-        body("name", Matchers.is("stut")).
-        body("id", Matchers.is(theId));
+      param("id", theId).
+    when().
+      get("/HydraDB/Host/getById?id={id}", theId).
+    then().
+      statusCode(HttpStatus.SC_OK).
+      body("name", Matchers.is("stut")).
+      body("id", Matchers.is(theId));
   }
 
   @Test
@@ -99,27 +142,27 @@ public class HostTest {
     String theOsType = "linux";
     String theOsInfo = "the os info";
     given().port(port).
-        param("name", theName).
-        param("osType", theOsType).
-        param("osInfo", theOsInfo).
-        when().
-        get("/HydraDB/Host/create?name={name}&osType={osType}&osInfo={osInfo}", theName, theOsType, theOsInfo).
-        then().
-        statusCode(HttpStatus.SC_OK).
-        body("name", Matchers.is(theName)).
-        body("osType", Matchers.is(theOsType)).
-        body("osInfo", Matchers.is(theOsInfo));
+      param("name", theName).
+      param("osType", theOsType).
+      param("osInfo", theOsInfo).
+     when().
+      get("/HydraDB/Host/create?name={name}&osType={osType}&osInfo={osInfo}", theName, theOsType, theOsInfo).
+     then().
+      statusCode(HttpStatus.SC_OK).
+      body("name", Matchers.is(theName)).
+      body("osType", Matchers.is(theOsType)).
+      body("osInfo", Matchers.is(theOsInfo));
 
     Integer theId = 1;
     given().port(port).
-        param("id", theId).
-        when().
-        get("/HydraDB/Host/getById?id={id}", theId).
-        then().
-        statusCode(HttpStatus.SC_OK).
-        body("name", Matchers.is(theName)).
-        body("osType", Matchers.is(theOsType)).
-        body("osInfo", Matchers.is(theOsInfo));
+      param("id", theId).
+    when().
+      get("/HydraDB/Host/getById?id={id}", theId).
+    then().
+      statusCode(HttpStatus.SC_OK).
+      body("name", Matchers.is(theName)).
+      body("osType", Matchers.is(theOsType)).
+      body("osInfo", Matchers.is(theOsInfo));
   }
 }
 //  @Test

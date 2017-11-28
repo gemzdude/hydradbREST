@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 
 public interface HydraDBService {
 
@@ -18,7 +19,7 @@ public interface HydraDBService {
 
   ResponseEntity<Host> getHostByName(String name);
   ResponseEntity<Host> getHostById(Integer id);
-  ResponseEntity<Host> createHost(String name, String osType, String osInfo);
+  ResponseEntity<Host> createHost(HttpServletRequest req, String name, String osType, String osInfo);
   ResponseEntity<Integer> maxHostId();
 
   /* HydraRun methods */

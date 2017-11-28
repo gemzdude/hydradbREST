@@ -14,7 +14,7 @@ public class HydraUrlFactory {
     String host = env.getRequiredProperty("spring.HydraEndpoint.host");
     String endpoint = env.getRequiredProperty("spring.HydraEndpoint.endpoint");
     UriComponents uriComponents = UriComponentsBuilder.newInstance()
-        .scheme("http").host(host).port(port).path(endpoint).build().encode();
+        .scheme("http").host(host).port(port).path(endpoint).build();
     return uriComponents.toUriString();
   }
 
@@ -22,7 +22,7 @@ public class HydraUrlFactory {
     String host = env.getRequiredProperty("spring.HydraEndpoint.host");
     String endpoint = env.getRequiredProperty("spring.HydraEndpoint.endpoint");
     UriComponents uriComponents = UriComponentsBuilder.newInstance()
-        .scheme("http").host(host).path(endpoint).build().encode();
+        .scheme("http").host(host).path(endpoint).build();
     return uriComponents.toUriString();
   }
 }

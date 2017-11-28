@@ -5,10 +5,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Repository
 public interface HostRepo extends JpaRepository<Host, Long> {
 
   // INSERT INTO HOST(ID, NAME, OS_TYPE, OS_INFO) VALUES(NEXTVAL('host_id_seq'), ?,?,?)
@@ -17,8 +19,6 @@ public interface HostRepo extends JpaRepository<Host, Long> {
   @Transactional
   void createHost(@Param("name") String name, @Param("osType") String osType, @Param("osInfo") String osInfo);
 
-  // SELECT ID, NAME, OS_TYPE, OS_INFO FROM HOST WHERE NAME=?
-//  @Query("SELECT h FROM Host h WHERE name = :name")
   List<Host> getHostByName(@Param("name") String name);
 
   // SELECT ID, NAME, OS_TYPE, OS_INFO FROM HOST WHERE ID=?

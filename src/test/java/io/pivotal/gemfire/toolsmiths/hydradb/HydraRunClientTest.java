@@ -49,7 +49,6 @@ public class HydraRunClientTest {
   public void canFetchRun1200() {
     hydraClient.setPort(port);
     HydraRun hr = hydraClient.getHydraRunById(1200);
-    log.info("SAJHR:" + hr);
   }
 
   @Test
@@ -57,7 +56,6 @@ public class HydraRunClientTest {
   public void canFetchHost1() {
     hydraClient.setPort(port);
     Host host = hydraClient.getHostById(1);
-    log.info("SAJHOST: " + host.getName());
   }
 
   @Test
@@ -68,6 +66,5 @@ public class HydraRunClientTest {
     String osType = "linux";
     String osInfo = "the os info";
     Host host = hydraClient.createHost(name, osType, osInfo);
-    log.info("SAJCREATE: " + host.getName());
   }
 }

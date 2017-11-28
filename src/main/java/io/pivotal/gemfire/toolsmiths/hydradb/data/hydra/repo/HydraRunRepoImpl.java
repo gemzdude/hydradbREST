@@ -2,11 +2,12 @@ package io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.repo;
 
 import io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraRun;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.ResultSetExtractor;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,6 +17,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
+@Repository
 public class HydraRunRepoImpl implements HydraRunRepoCustom {
 
   private static Logger log = Logger.getLogger(HydraRunRepoImpl.class);
@@ -28,19 +31,44 @@ public class HydraRunRepoImpl implements HydraRunRepoCustom {
       + "WHERE HTD.HYDRA_TEST_ID=HT.ID AND HT.HYDRA_TESTSUITE_ID=? "
       + "ORDER BY HTD.HYDRA_RUN_ID DESC LIMIT ?";
 
-  JdbcTemplate jdbcTemplate;
+  @Autowired
+  JdbcTemplate HydraJdbcTemplate;
+
+  @Override
+  public Map<Integer, HydraRun> populateHydraRuns(int id, int numRuns,
+                                           String gemfireVersion, String jdk, String jdkVendor, int svnRevision,
+                                           String branch, String buildUser) {
+    List<Integer> list = getHydraRunsForBatteryTest(id, numRuns);
+    Map<Integer, HydraRun> hydraRunList = getHydraRunSet(list,
+        gemfireVersion, jdk, jdkVendor, svnRevision, branch, buildUser);
+    return hydraRunList;
+  }
+
+  @Override
+  public List<Integer> getHydraRunsForBatteryTest(int id, int numRuns) throws DataAccessException {
+    return HydraJdbcTemplate.query(SQL_HYDRA_RUNS_FOR_BATTERYTEST, new Object[] { id, numRuns }, new ResultSetExtractor<List<Integer>>() {
+      @Override
+      public List<Integer> extractData(ResultSet rs) throws SQLException {
+        List<Integer> list = new ArrayList<Integer>();
+        while (rs.next()) {
+          list.add(rs.getInt(1));
+        }
+        return list;
+      }
+    });
+  }
 
   @Override
   public Map<Integer, HydraRun> getHydraRunSet(
-      @RequestParam("list") List<Integer> list,
-      @RequestParam("gemfireVersion") String gemfireVersion,
-      @RequestParam("jdk") String jdk,
-      @RequestParam("jdkVendor") String jdkVendor,
-      @RequestParam("svnRevision") int svnRevision,
-      @RequestParam("branch") String branch,
-      @RequestParam("buildUser") String buildUser)
+      List<Integer> list,
+      String gemfireVersion,
+      String jdk,
+      String jdkVendor,
+      int svnRevision,
+      String branch,
+      String buildUser)
   {
-    return jdbcTemplate.query(
+    return HydraJdbcTemplate.query(
         prepareQueryForHydraRunSet(list,
             gemfireVersion,
             jdk,
@@ -82,20 +110,6 @@ public class HydraRunRepoImpl implements HydraRunRepoCustom {
             return hydraRunList;
           }
         });
-  }
-
-  @Override
-  public List<Integer> getHydraRunsForBatteryTest(int id, int numRuns) throws DataAccessException {
-    return jdbcTemplate.query(SQL_HYDRA_RUNS_FOR_BATTERYTEST, new Object[] { id, numRuns }, new ResultSetExtractor<List<Integer>>() {
-      @Override
-      public List<Integer> extractData(ResultSet rs) throws SQLException {
-        List<Integer> list = new ArrayList<Integer>();
-        while (rs.next()) {
-          list.add(rs.getInt(1));
-        }
-        return list;
-      }
-    });
   }
 
   private PreparedStatementSetter prepareQueryParams(final String gemfireVersion,
