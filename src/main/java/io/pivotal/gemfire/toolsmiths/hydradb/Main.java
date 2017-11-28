@@ -9,7 +9,6 @@ public class Main {
 
   public static void main(String[] args) {
     SpringApplication.run(io.pivotal.gemfire.toolsmiths.hydradb.Main.class, args);
-    System.out.println("Made it past spring init");
   }
 
 }

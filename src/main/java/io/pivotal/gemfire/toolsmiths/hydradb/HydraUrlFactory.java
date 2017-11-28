@@ -1,6 +1,7 @@
 package io.pivotal.gemfire.toolsmiths.hydradb;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -10,19 +11,30 @@ public class HydraUrlFactory {
   @Autowired
   private Environment env;
 
+  @Value("${spring.hydraEndpoint.host:localhostx}")
+  String hydradbHost;
+
+  @Value("${spring.hydraEndpoint.endpoint:/HydraDB}")
+  String hydradbEndpoint;
+  
+  @Value("#{new Integer('${spring.hydraEndpoint.port:8080}')}")
+  Integer hydradbPort;
+
   String getURL(Integer port) {
-    String host = env.getRequiredProperty("spring.HydraEndpoint.host");
-    String endpoint = env.getRequiredProperty("spring.HydraEndpoint.endpoint");
     UriComponents uriComponents = UriComponentsBuilder.newInstance()
-        .scheme("http").host(host).port(port).path(endpoint).build();
+        .scheme("http").host(hydradbHost).port(port).path(hydradbEndpoint).build();
     return uriComponents.toUriString();
   }
 
   String getURL() {
-    String host = env.getRequiredProperty("spring.HydraEndpoint.host");
-    String endpoint = env.getRequiredProperty("spring.HydraEndpoint.endpoint");
-    UriComponents uriComponents = UriComponentsBuilder.newInstance()
-        .scheme("http").host(host).path(endpoint).build();
-    return uriComponents.toUriString();
+    return getURL(hydradbPort);
+  }
+
+  void setPort(Integer port) {
+    this.hydradbPort = port;
+  }
+
+  Integer getPort() {
+    return hydradbPort;
   }
 }

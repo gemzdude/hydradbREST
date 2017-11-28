@@ -20,7 +20,6 @@ import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
@@ -29,10 +28,7 @@ import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-//@WebAppConfiguration
 @SpringBootTest(webEnvironment=RANDOM_PORT)
-@TestPropertySource(
-    locations = "classpath:config/saj.properties")
 @DbUnitConfiguration(databaseConnection="hydraDataSource")
 @TestExecutionListeners({
     DependencyInjectionTestExecutionListener.class,

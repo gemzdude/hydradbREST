@@ -16,16 +16,12 @@ import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-//@WebAppConfiguration
 @SpringBootTest(webEnvironment=RANDOM_PORT)
-@TestPropertySource(
-    locations = "classpath:config/saj.properties")
 @DbUnitConfiguration(databaseConnection="hydraDataSource")
 @TestExecutionListeners({
     DependencyInjectionTestExecutionListener.class,
@@ -41,6 +37,7 @@ public class HydraRunClientTest {
   @Autowired
   HydraDBClient hydraClient;
 
+  /* we need to set the hydraClient port before each test since we're on a random port */
   @LocalServerPort
   private int port;
 

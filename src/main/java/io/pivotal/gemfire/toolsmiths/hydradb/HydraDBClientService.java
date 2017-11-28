@@ -32,19 +32,19 @@ public class HydraDBClientService implements HydraDBClient {
   RestTemplate restTemplate = new RestTemplate();
 
   public void setPort(Integer port) {
-    this.port = port;
+    urlFactory.setPort(port);
   }
 
   public Integer getPort() {
-    return port;
+    return urlFactory.getPort();
   }
 
   private String getURL(String service) {
-    if(port==0) {
+//    if(port==0) {
       return urlFactory.getURL() + service;
-    } else {
-      return urlFactory.getURL(port) + service;
-    }
+//    } else {
+//      return urlFactory.getURL(port) + service;
+//    }
   }
 
   private Object getResponse(ResponseEntity response) {

@@ -19,18 +19,12 @@ import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 
-//import static org.hamcrest.Matchers.*
-
 @RunWith(SpringJUnit4ClassRunner.class)
-//@WebAppConfiguration
 @SpringBootTest(webEnvironment=RANDOM_PORT)
-@TestPropertySource(
-    locations = "classpath:config/saj.properties")
 @DbUnitConfiguration(databaseConnection="hydraDataSource")
 @TestExecutionListeners({
     DependencyInjectionTestExecutionListener.class,
@@ -50,20 +44,9 @@ public class HostTest {
   Host host1;
   Host host2;
 
-//  @Before
-//  public void setUp() {
-//    host1 = new Host("Mickey Mouse");
-//    host2 = new Host("Mickey Mouse");
-//    hostRepo.deleteAll();
-//    hostRepo.save(Arrays.asList(host1, host2));
-//  }
-
   @Test
   @DatabaseSetup(value="/hostData.xml")
   public void canFetchHost1() {
-
-//    RestAssured.defaultParser = Parser.JSON;
-
     Integer theId = 1;
     given().port(port).
       param("id", theId).
@@ -78,9 +61,6 @@ public class HostTest {
   @Test
   @DatabaseSetup(value="/hostData.xml")
   public void hostNotFound() {
-
-//    RestAssured.defaultParser = Parser.JSON;
-
     Integer theId = 9999;
     given().port(port).
         param("id", theId).
@@ -123,7 +103,6 @@ public class HostTest {
   @ExpectedDatabase(value = "/expectedHostData.xml", table = "Host")
   //@DatabaseTearDown(type = DELETE_ALL, value = "/hostData.xml")
   public void canFetchHost3() {
-
     Integer theId = 3;
     given().port(port).
       param("id", theId).
@@ -165,18 +144,4 @@ public class HostTest {
       body("osInfo", Matchers.is(theOsInfo));
   }
 }
-//  @Test
-//  @DatabaseSetup("hostData.xml")
-//  public void testFind() throws Exception {
-//    List<Host> personList = this.hostRepo.find("hil");
-//    assertEquals(1, personList.size());
-//    assertEquals("Phillip", personList.get(0).getFirstName());
-//  }
-//
-//  @Test
-//  @DatabaseSetup("hostData.xml")
-//  @ExpectedDatabase("expectedHostData.xml")
-//  public void testRemove() throws Exception {
-//    this.personService.remove(1);
-//  }
 
