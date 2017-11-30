@@ -22,6 +22,7 @@ import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(webEnvironment=RANDOM_PORT)
@@ -38,6 +39,9 @@ public class HostTest {
   @Autowired
   HostRepo hostRepo;
 
+  @Autowired
+  private HydraUrlFactory urlFactory;
+
   @LocalServerPort
   private int port;
 
@@ -48,11 +52,12 @@ public class HostTest {
   @DatabaseSetup(value="/hostData.xml")
   public void canFetchHost1() {
     Integer theId = 1;
-    given().port(port).
-      param("id", theId).
-    when().
-      get("/HydraDB/Host/getById?id={id}", theId).
-    then().
+
+    String theURI = UriComponentsBuilder.fromHttpUrl(urlFactory.getURL(port) + "/Host/getById")
+        .queryParam("id", theId)
+        .build(false).toUriString();
+
+    given().when().get(theURI).then().
       statusCode(HttpStatus.SC_OK).
       body("name", Matchers.is("odin")).
       body("id", Matchers.is(theId));
@@ -62,12 +67,13 @@ public class HostTest {
   @DatabaseSetup(value="/hostData.xml")
   public void hostNotFound() {
     Integer theId = 9999;
-    given().port(port).
-        param("id", theId).
-        when().
-        get("/HydraDB/Host/getById?id={id}", theId).
-        then().
-        statusCode(HttpStatus.SC_NOT_FOUND);
+
+    String theURI = UriComponentsBuilder.fromHttpUrl(urlFactory.getURL(port) + "/Host/getById")
+        .queryParam("id", theId)
+        .build(false).toUriString();
+
+    given().when().get(theURI).then().
+      statusCode(HttpStatus.SC_NOT_FOUND);
   }
 
   /*
@@ -75,13 +81,14 @@ public class HostTest {
  */
   @Test
   public void badRequest() {
-    String theId = "notAint";
-    given().port(port).
-        param("id", theId).
-        when().
-        get("/HydraDB/Host/getById?id={id}", theId).
-        then().
-        statusCode(HttpStatus.SC_BAD_REQUEST);
+    String theId = "notAnInt";
+
+    String theURI = UriComponentsBuilder.fromHttpUrl(urlFactory.getURL(port) + "/Host/getById")
+      .queryParam("id", theId)
+      .build(false).toUriString();
+
+    given().when().get(theURI).then().
+      statusCode(HttpStatus.SC_BAD_REQUEST);
   }
 
   /*
@@ -90,25 +97,26 @@ public class HostTest {
   @Test
   public void badRequest2() {
     String theId = "notAint";
-    given().port(port).
-        param("id", theId).
-        when().
-        get("/HydraDB/Host/getBySomethingNotMapped?id={id}", theId).
-        then().
-        statusCode(HttpStatus.SC_NOT_FOUND);
+
+    String theURI = UriComponentsBuilder.fromHttpUrl(urlFactory.getURL(port) + "/Host/getBySomethingNotMapped")
+      .queryParam("id", theId)
+      .build(false).toUriString();
+
+    given().when().get(theURI).then().
+      statusCode(HttpStatus.SC_NOT_FOUND);
   }
 
   @Test
   @DatabaseSetup(value="/hostData.xml")
   @ExpectedDatabase(value = "/expectedHostData.xml", table = "Host")
-  //@DatabaseTearDown(type = DELETE_ALL, value = "/hostData.xml")
   public void canFetchHost3() {
     Integer theId = 3;
-    given().port(port).
-      param("id", theId).
-    when().
-      get("/HydraDB/Host/getById?id={id}", theId).
-    then().
+
+    String theURI = UriComponentsBuilder.fromHttpUrl(urlFactory.getURL(port) + "/Host/getById")
+      .queryParam("id", theId)
+      .build(false).toUriString();
+
+    given().when().get(theURI).then().
       statusCode(HttpStatus.SC_OK).
       body("name", Matchers.is("stut")).
       body("id", Matchers.is(theId));
@@ -120,24 +128,26 @@ public class HostTest {
     String theName = "newhost";
     String theOsType = "linux";
     String theOsInfo = "the os info";
-    given().port(port).
-      param("name", theName).
-      param("osType", theOsType).
-      param("osInfo", theOsInfo).
-     when().
-      get("/HydraDB/Host/create?name={name}&osType={osType}&osInfo={osInfo}", theName, theOsType, theOsInfo).
-     then().
+
+    String theURI = UriComponentsBuilder.fromHttpUrl(urlFactory.getURL(port) + "/Host/create")
+      .queryParam("name", theName)
+      .queryParam("osType", theOsType)
+      .queryParam("osInfo", theOsInfo)
+      .build(false).toUriString();
+
+    given().when().get(theURI).then().
       statusCode(HttpStatus.SC_OK).
       body("name", Matchers.is(theName)).
       body("osType", Matchers.is(theOsType)).
       body("osInfo", Matchers.is(theOsInfo));
 
     Integer theId = 1;
-    given().port(port).
-      param("id", theId).
-    when().
-      get("/HydraDB/Host/getById?id={id}", theId).
-    then().
+
+    theURI = UriComponentsBuilder.fromHttpUrl(urlFactory.getURL(port) + "/Host/getById")
+      .queryParam("id", theId)
+      .build(false).toUriString();
+
+    given().when().get(theURI).then().
       statusCode(HttpStatus.SC_OK).
       body("name", Matchers.is(theName)).
       body("osType", Matchers.is(theOsType)).

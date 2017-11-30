@@ -19,7 +19,8 @@ import java.util.List;
 import java.util.Map;
 
 public class HydraHistoryRepoImpl implements HydraHistoryRepoCustom {
-  private static Logger log = Logger.getLogger(HydraTestDetailImpl.class);
+
+  private static Logger log = Logger.getLogger(HydraHistoryRepoImpl.class);
 
   public static final String SQL_HYDRA_HISTORY_BY_BATTERYTEST = "SELECT HTD.ID, HTD.ELAPSED_TIME, HTD.DISK_USAGE, "
       + " HTD.STATUS, HTD.ERROR,"
