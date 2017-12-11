@@ -10,7 +10,7 @@ public class HydraTestRepoImpl implements HydraTestRepoCustom {
 
   HydraTestRepo hydraTestRepo;
 
-  public TestInfo getOrCreateTestInfo(String conf, String fullTestSpec, Integer testsuiteId) {
+  public HydraTest getOrCreateTestInfo(String conf, String fullTestSpec, Integer testsuiteId) {
     HydraTest ht = hydraTestRepo.getHydraTestByFullTestSpecAndHydraTestsuiteId(fullTestSpec, testsuiteId);
     if(ht==null) {
       ht = new HydraTest();
@@ -19,6 +19,6 @@ public class HydraTestRepoImpl implements HydraTestRepoCustom {
       ht.setHydraTestsuiteId(testsuiteId);
       hydraTestRepo.save(ht);
     }
-    return new TestInfo(ht.getId(), ht.getConf(), ht.getFullTestSpec(), ht.getHydraTestsuiteId());
+    return ht;
   }
 }

@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/host")
 public class HostEndpoint {
@@ -18,8 +16,8 @@ public class HostEndpoint {
   HostRepo dao;
 
   @GetMapping(value="", params="name")
-  private List<Host> getHost(@RequestParam("name") String name) {
-    return dao.getHostByName(name);
+  private Host getHost(@RequestParam("name") String name) {
+    return dao.getHostByName(name)[0];
   }
 
   @GetMapping(value="", params="id")

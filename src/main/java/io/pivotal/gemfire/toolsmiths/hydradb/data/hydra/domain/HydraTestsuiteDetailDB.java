@@ -188,12 +188,12 @@ public class HydraTestsuiteDetailDB
 			obj.setHostId(rs.getInt(COLUMNS.HOST_ID.getColumnAliasName()));
 			obj.setComment(rs.getString(COLUMNS.COMMENT.getColumnAliasName()));
 			obj.setArtifactLocation(rs.getString(COLUMNS.ARTIFACT_LOCATION.getColumnAliasName()));
-			if (this.loadAllFKeys || this.loadHost)
-				obj.setHost(HostDB.ALIAS_ROW_MAPPER.mapRow(rs, rowNum));
-			if (this.loadAllFKeys || this.loadHydraRun)
-				obj.setHydraRun(HydraRunDB.ALIAS_ROW_MAPPER.mapRow(rs, rowNum));
-			if (this.loadAllFKeys || this.loadHydraTestsuite)
-				obj.setHydraTestsuite(HydraTestsuiteDB.ALIAS_ROW_MAPPER.mapRow(rs, rowNum));
+//	saj		if (this.loadAllFKeys || this.loadHost)
+//				obj.setHost(HostDB.ALIAS_ROW_MAPPER.mapRow(rs, rowNum));
+//			if (this.loadAllFKeys || this.loadHydraRun)
+//				obj.setHydraRun(HydraRunDB.ALIAS_ROW_MAPPER.mapRow(rs, rowNum));
+//			if (this.loadAllFKeys || this.loadHydraTestsuite)
+//				obj.setHydraTestsuite(HydraTestsuiteDB.ALIAS_ROW_MAPPER.mapRow(rs, rowNum));
 			return obj;
 		}
 	}

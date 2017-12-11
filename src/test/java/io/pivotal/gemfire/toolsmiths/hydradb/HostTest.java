@@ -1,6 +1,7 @@
 package io.pivotal.gemfire.toolsmiths.hydradb;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertEquals;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
@@ -22,6 +23,7 @@ import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -48,19 +50,32 @@ public class HostTest {
   Host host1;
   Host host2;
 
+  @Autowired
+  HydraDBClient hydraDBClient;
+
   @Test
   @DatabaseSetup(value="/hostData.xml")
   public void canFetchHost1() {
-    Integer theId = 1;
 
-    String theURI = UriComponentsBuilder.fromHttpUrl(urlFactory.getURL(port) + "/Host/getById")
-        .queryParam("id", theId)
-        .build(false).toUriString();
+    hydraDBClient.setPort(port);
+    Integer theId = 9999;
 
-    given().when().get(theURI).then().
-      statusCode(HttpStatus.SC_OK).
-      body("name", Matchers.is("odin")).
-      body("id", Matchers.is(theId));
+    try {
+      Host host = hydraDBClient.getHostById(theId);
+    } catch (HttpClientErrorException ex) {
+      assertEquals(ex.getStatusCode().value(), HttpStatus.SC_NOT_FOUND);
+    }
+
+//    assertNotNull(host);
+//    assertEquals("odin", host.getName());
+//    String theURI = UriComponentsBuilder.fromHttpUrl(urlFactory.getURL(port) + "/Host/getById")
+//        .queryParam("id", theId)
+//        .build(false).toUriString();
+//
+//    given().when().get(theURI).then().
+//      statusCode(HttpStatus.SC_OK).
+//      body("name", Matchers.is("odin")).
+//      body("id", Matchers.is(theId));
   }
 
   @Test
@@ -89,6 +104,7 @@ public class HostTest {
 
     given().when().get(theURI).then().
       statusCode(HttpStatus.SC_BAD_REQUEST);
+//        body(Matchers.is(""));
   }
 
   /*

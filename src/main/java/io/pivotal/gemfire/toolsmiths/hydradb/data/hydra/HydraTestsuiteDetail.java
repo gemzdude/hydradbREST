@@ -3,7 +3,10 @@ package io.pivotal.gemfire.toolsmiths.hydradb.data.hydra;
 import org.springframework.data.domain.Persistable;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -20,37 +23,50 @@ public class HydraTestsuiteDetail implements Persistable<Integer>
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@Column
 	private Date date = new Date ();
 
+	@Column
 	private String elapsedTime;
 
+	@Column
 	private String diskUsage;
 
+	@Column
 	private Integer passcount;
 
+	@Column
 	private Integer failcount;
 
+	@Column
 	private Integer hangcount;
 
+	@Column
 	private String localConf;
 
+	@Column
 	private Integer hydraTestsuiteId;
 
+	@Column
 	private Integer hydraRunId;
 
+	@Column
 	private Integer hostId;
 
+	@Column
 	private String comment;
 
+	@Column
 	private String artifactLocation = "";
 
 	private transient boolean persisted;
 
-	private Host host;
-	private HydraRun hydraRun;
-	private HydraTestsuite hydraTestsuite;
+	private transient Host host;
+	private transient HydraRun hydraRun;
+	private transient HydraTestsuite hydraTestsuite;
 
 	public HydraTestsuiteDetail ()
 	{

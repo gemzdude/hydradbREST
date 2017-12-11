@@ -1,11 +1,12 @@
 package io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.repo;
 
-import io.pivotal.gemfire.toolsmiths.hydradb.TestSuiteInfo;
+import io.pivotal.gemfire.toolsmiths.hydradb.IdAndName;
+import org.springframework.data.repository.query.Param;
 
 public interface HydraTestsuiteRepoCustom {
 
-  TestSuiteInfo getOrCreateTestSuiteInfo(String testsuiteName);
+  IdAndName getHydraTestsuiteIdAndNameById(@Param("id") Integer id);
 
-  public TestSuiteInfo getTestSuiteInfo(long suiteId);
+  IdAndName getHydraTestsuiteIdAndNameByName(@Param("name") String name);
 
 }

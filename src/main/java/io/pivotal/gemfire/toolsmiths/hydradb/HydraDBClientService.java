@@ -4,6 +4,7 @@ import io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.Host;
 import io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraRun;
 import io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTest;
 import io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTestDetail;
+import io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTestDetailExt;
 import io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTestsuite;
 import io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTestsuiteDetail;
 import org.apache.log4j.Logger;
@@ -49,7 +50,7 @@ public class HydraDBClientService implements HydraDBClient {
 
   private Object getResponse(ResponseEntity response) {
     Object obj = null;
-    if (response.getStatusCode() == HttpStatus.OK) {
+    if (response!=null && response.getStatusCode() == HttpStatus.OK) {
       obj = response.getBody();
     }
     return obj;
@@ -67,6 +68,10 @@ public class HydraDBClientService implements HydraDBClient {
         .queryParam("name", name)
         .build(false).toUri();
     ResponseEntity<Host> hostResponse = restTemplate.getForEntity(theURI, Host.class);
+//    System.out.println("CLIENTRESP: " + hostResponse.getBody());
+//    Host hosts = (Host[])hostResponse.getBody();
+
+//    return hosts[0];
     return (Host)getResponse(hostResponse);
   }
 
@@ -82,6 +87,16 @@ public class HydraDBClientService implements HydraDBClient {
   @Override
   public Host createHost(String name, String osType, String osInfo) {
     URI uri = UriComponentsBuilder.fromHttpUrl(getURL("/Host/create"))
+        .queryParam("name", name)
+        .queryParam("osType", osType)
+        .queryParam("osInfo", osInfo).build(false).toUri();
+    ResponseEntity<Host> hostResponse = restTemplate.getForEntity(uri, Host.class);
+    return (Host)getResponse(hostResponse);
+  }
+
+  @Override
+  public Host getOrCreateHost(String name, String osType, String osInfo) {
+    URI uri = UriComponentsBuilder.fromHttpUrl(getURL("/Host/getOrCreate"))
         .queryParam("name", name)
         .queryParam("osType", osType)
         .queryParam("osInfo", osInfo).build(false).toUri();
@@ -112,6 +127,29 @@ public class HydraDBClientService implements HydraDBClient {
         .build(false).toUri();
     ResponseEntity<Integer> hostResponse = restTemplate.getForEntity(uri, Integer.class);
     return (Integer)getResponse(hostResponse);
+  }
+
+  @Override
+  public HydraRun getOrCreateHydraRun(String userName, String productVersion, String buildId,
+                                 String svnRepository, String svnRevision, String javaVersion,
+                                 String javaVendor, String javaHome, Boolean fullRegression,
+                                 Integer regressionType, String comments, String buildLocation) {
+    URI theURI = UriComponentsBuilder.fromHttpUrl(getURL("/HydraRun/getOrCreate"))
+        .queryParam("userName", userName)
+        .queryParam("productVersion", productVersion)
+        .queryParam("buildId", buildId)
+        .queryParam("svnRepository", svnRepository)
+        .queryParam("svnRevision", svnRevision)
+        .queryParam("javaVersion", javaVersion)
+        .queryParam("javaVendor", javaVendor)
+        .queryParam("javaHome", javaHome)
+        .queryParam("fullRegression", fullRegression)
+        .queryParam("regressionType", regressionType)
+        .queryParam("comments", comments)
+        .queryParam("buildLocation", buildLocation)
+        .build(false).toUri();
+    ResponseEntity<HydraRun> hostResponse = restTemplate.getForEntity(theURI, HydraRun.class);
+    return (HydraRun)getResponse(hostResponse);
   }
 
   @Override
@@ -180,14 +218,25 @@ public class HydraDBClientService implements HydraDBClient {
   }
 
   @Override
-  public Integer createHydraTest(String conf, String fullTestSpec, Integer hydraTestsuiteId) {
+  public HydraTest getOrCreateHydraTest(String conf, String fullTestSpec, Integer hydraTestsuiteId) {
+    URI theURI = UriComponentsBuilder.fromHttpUrl(getURL("/HydraTest/getOrCreate"))
+        .queryParam("conf", conf)
+        .queryParam("fullTestSpec", fullTestSpec)
+        .queryParam("hydraTestsuiteId", hydraTestsuiteId)
+        .build(false).toUri();
+    ResponseEntity<HydraTest> hostResponse = restTemplate.getForEntity(theURI, HydraTest.class);
+    return (HydraTest)getResponse(hostResponse);
+  }
+
+  @Override
+  public HydraTest createHydraTest(String conf, String fullTestSpec, Integer hydraTestsuiteId) {
     URI theURI = UriComponentsBuilder.fromHttpUrl(getURL("/HydraTest/create"))
         .queryParam("conf", conf)
         .queryParam("fullTestSpec", fullTestSpec)
         .queryParam("hydraTestsuiteId", hydraTestsuiteId)
         .build(false).toUri();
-    ResponseEntity<Integer> hostResponse = restTemplate.getForEntity(theURI, Integer.class);
-    return (Integer)getResponse(hostResponse);
+    ResponseEntity<HydraTest> hostResponse = restTemplate.getForEntity(theURI, HydraTest.class);
+    return (HydraTest)getResponse(hostResponse);
   }
 
   @Override
@@ -203,8 +252,8 @@ public class HydraDBClientService implements HydraDBClient {
 
   @Override
   public HydraTestDetail createHydraTestDetail(String elapsedTime, String diskStr, String status,
-                                               String error, String bugNumber, long testId,
-                                               long testSuiteDetailId, int runId, String comment,
+                                               String error, String bugNumber, Integer testId,
+                                               Integer testSuiteDetailId, Integer runId, String comment,
                                                String tags) {
     URI theURI = UriComponentsBuilder.fromHttpUrl(getURL("/HydraTestDetail/create"))
         .queryParam("elapsedTime", elapsedTime)
@@ -223,7 +272,7 @@ public class HydraDBClientService implements HydraDBClient {
   }
 
   @Override
-  public HydraTestDetail getHydraTestDetail(long testId, long testSuiteDetailId, int runId) {
+  public HydraTestDetail getHydraTestDetail(Integer testId, Integer testSuiteDetailId, Integer runId) {
     URI theURI = UriComponentsBuilder.fromHttpUrl(getURL("/HydraTestDetail/get"))
         .queryParam("testId", testId)
         .queryParam("testSuiteDetailId", testSuiteDetailId)
@@ -243,21 +292,48 @@ public class HydraDBClientService implements HydraDBClient {
   }
 
   @Override
-  public IdAndName getHydraTestsuiteIdAndNameById(Integer id) {
-    URI theURI = UriComponentsBuilder.fromHttpUrl(getURL("/HydraTestsuite/getIdAndNameById"))
-        .queryParam("id", id)
+  public HydraTestDetailExt createHydraTestDetailExt(Long testDetailId, String logLocation) {
+    URI theURI = UriComponentsBuilder.fromHttpUrl(getURL("/HydraTestDetailExt/create"))
+        .queryParam("testDetailId", testDetailId)
+        .queryParam("logLocation", logLocation)
         .build(false).toUri();
-    ResponseEntity<HydraTestsuite> hostResponse = restTemplate.getForEntity(theURI, HydraTestsuite.class);
-    return (IdAndName)getResponse(hostResponse);
+
+    ResponseEntity<HydraTestDetailExt> hostResponse = null;
+//    try {
+    hostResponse = restTemplate.getForEntity(theURI, HydraTestDetailExt.class);
+//    } catch (HttpStatusCodeException e) {
+//      System.out.println("SAJERR: " + e);
+//      return null;
+//    }
+//    return (HydraTestDetailExt)getResponse(hostResponse);
+    return (HydraTestDetailExt)getResponse(hostResponse);
   }
 
   @Override
-  public IdAndName getHydraTestsuiteIdAndNameByName(String name) {
-    URI theURI = UriComponentsBuilder.fromHttpUrl(getURL("/HydraTestsuite/getIdAndNameByName"))
+  public HydraTestsuite getOrCreateHydraTestsuite(String name) {
+    URI theURI = UriComponentsBuilder.fromHttpUrl(getURL("/HydraTestsuite/getOrCreate"))
         .queryParam("name", name)
         .build(false).toUri();
     ResponseEntity<HydraTestsuite> hostResponse = restTemplate.getForEntity(theURI, HydraTestsuite.class);
-    return (IdAndName)getResponse(hostResponse);
+    return (HydraTestsuite)getResponse(hostResponse);
+  }
+
+  @Override
+  public HydraTestsuite getHydraTestsuiteById(Integer id) {
+    URI theURI = UriComponentsBuilder.fromHttpUrl(getURL("/HydraTestsuite/getById"))
+        .queryParam("id", id)
+        .build(false).toUri();
+    ResponseEntity<HydraTestsuite> hostResponse = restTemplate.getForEntity(theURI, HydraTestsuite.class);
+    return (HydraTestsuite)getResponse(hostResponse);
+  }
+
+  @Override
+  public HydraTestsuite getHydraTestsuiteByName(String name) {
+    URI theURI = UriComponentsBuilder.fromHttpUrl(getURL("/HydraTestsuite/getByName"))
+        .queryParam("name", name)
+        .build(false).toUri();
+    ResponseEntity<HydraTestsuite> hostResponse = restTemplate.getForEntity(theURI, HydraTestsuite.class);
+    return (HydraTestsuite)getResponse(hostResponse);
   }
 
   @Override

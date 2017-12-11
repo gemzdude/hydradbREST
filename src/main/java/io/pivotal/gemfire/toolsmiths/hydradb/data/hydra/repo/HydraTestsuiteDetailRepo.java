@@ -22,16 +22,16 @@ public interface HydraTestsuiteDetailRepo extends JpaRepository<HydraTestsuiteDe
 
   // INSERT INTO HYDRA_TESTSUITE_DETAIL(ID, DATE, ELAPSED_TIME, DISK_USAGE, LOCAL_CONF, HYDRA_TESTSUITE_ID, HYDRA_RUN_ID, HOST_ID, COMMENT, ARTIFACT_LOCATION) VALUES(NEXTVAL('hydra_testsuite_detail_id_seq'), ?,?,?,?,?,?,?,?, ?)
 
-  @Query(value = "INSERT INTO HydraTestsuiteDetail(id, date, elapsedTime, diskUsage, localConf, hydraTestsuiteId, hydraRunId, hostId, comment, artifactLocation) VALUES(NEXTVAL('hydra_testsuite_detail_id_seq'), :date,:elapsedTime,:diskUsage,:localConf,:hydraTestsuiteId,:hydraRunId,:hostId,:comment,:artifactLocation)", nativeQuery = true)
-  void createHydraTestsuiteDetail(@Param("date") Date date,
-                                     @Param("elapsedTime") String elapsedTime,
-                                     @Param("diskUsage") String diskUsage,
-                                     @Param("localConf") String localConf,
-                                     @Param("hydraTestsuiteId") Integer hydraTestsuiteId,
-                                     @Param("hydraRunId") Integer hydraRunId,
-                                     @Param("hostId") Integer hostId,
-                                     @Param("comment") String comment,
-                                     @Param("artifactLocation") String artifactLocation
-  );
+//  @Query(value = "INSERT INTO HydraTestsuiteDetail(id, date, elapsedTime, diskUsage, localConf, hydraTestsuiteId, hydraRunId, hostId, comment, artifactLocation) VALUES(NEXTVAL('hydra_testsuite_detail_id_seq'), :date,:elapsedTime,:diskUsage,:localConf,:hydraTestsuiteId,:hydraRunId,:hostId,:comment,:artifactLocation)", nativeQuery = true)
+//  void createHydraTestsuiteDetail(@Param("date") Date date,
+//                                     @Param("elapsedTime") String elapsedTime,
+//                                     @Param("diskUsage") String diskUsage,
+//                                     @Param("localConf") String localConf,
+//                                     @Param("hydraTestsuiteId") Integer hydraTestsuiteId,
+//                                     @Param("hydraRunId") Integer hydraRunId,
+//                                     @Param("hostId") Integer hostId,
+//                                     @Param("comment") String comment,
+//                                     @Param("artifactLocation") String artifactLocation
+//  );
 
 }

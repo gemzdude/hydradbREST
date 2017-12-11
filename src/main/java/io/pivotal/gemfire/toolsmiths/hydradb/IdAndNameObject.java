@@ -9,4 +9,8 @@ public class IdAndNameObject {
     this.id = id;
     this.name = name;
   }
+
+  public String toString() {
+    return "ID: " + getId() + " NAME: " + getName();
+  }
 }

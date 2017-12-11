@@ -4,14 +4,12 @@ import io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.Host;
 import io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraRun;
 import io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTest;
 import io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTestDetail;
-import io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTestsuiteDetail;
-import org.springframework.data.repository.query.Param;
+import io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTestDetailExt;
+import io.pivotal.gemfire.toolsmiths.hydradb.data.hydra.HydraTestsuite;
 import org.springframework.http.ResponseEntity;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
 
 public interface HydraDBService {
 
@@ -19,7 +17,8 @@ public interface HydraDBService {
 
   ResponseEntity<Host> getHostByName(String name);
   ResponseEntity<Host> getHostById(Integer id);
-  ResponseEntity<Host> createHost(HttpServletRequest req, String name, String osType, String osInfo);
+  ResponseEntity<Host> createHost(String name, String osType, String osInfo);
+  ResponseEntity<Host> getOrCreateHost(String name, String osType, String osInfo);
   ResponseEntity<Integer> maxHostId();
 
   /* HydraRun methods */
@@ -28,7 +27,7 @@ public interface HydraDBService {
 
   ResponseEntity<Integer> maxHydraRunId();
 
-  ResponseEntity<HydraRun> createHydraRun(String userName,
+  ResponseEntity<HydraRun> getOrCreateHydraRun(String userName,
                           String productVersion,
                           String buildId,
                           String svnRepository,
@@ -46,43 +45,50 @@ public interface HydraDBService {
                           String svnRepository, String svnRevision, String javaVersion,
                           String javaVendor);
 
-  ResponseEntity<Map<Integer, HydraRun>> getHydraRunSet(List<Integer> list,
-                                        String gemfireVersion, String jdk, String jdkVendor, int svnRevision,
-                                        String branch, String buildUser);
-
-  ResponseEntity<List<Integer>> getHydraRunsForBatteryTest(int id, int numRuns);
+//  ResponseEntity<Map<Integer, HydraRun>> getHydraRunSet(List<Integer> list,
+//                                        String gemfireVersion, String jdk, String jdkVendor, int svnRevision,
+//                                        String branch, String buildUser);
+//
+//  ResponseEntity<List<Integer>> getHydraRunsForBatteryTest(int id, int numRuns);
 
   /* HydraTest methods */
 
-  HydraTest getHydraTestById(Integer hydraTestsuiteId);
+  ResponseEntity<HydraTest> getHydraTestById(Integer hydraTestsuiteId);
 
-  Integer createHydraTest(String conf,
+  ResponseEntity<HydraTest> getOrCreateHydraTest(String conf,
+                                            String fullTestSpec,
+                                            Integer hydraTestsuiteId
+  );
+
+  ResponseEntity<HydraTest> createHydraTest(String conf,
                           String fullTestSpec,
                           Integer hydraTestsuiteId
   );
 
-  HydraTest getHydraTestByFullTestSpecAndHydraTestsuiteId(String fullTestSpec,
+  ResponseEntity<HydraTest> getHydraTestByFullTestSpecAndHydraTestsuiteId(String fullTestSpec,
                                                           Integer hydraTestsuiteId
   );
 
   /* HydraTestDetail methods */
 
-  HydraTestDetail createHydraTestDetail(String elapsedTime,
-                                   String diskStr,
-                                   String status,
-                                   String error,
-                                   String bugNumber,
-                                   long testId,
-                                   long testSuiteDetailId,
-                                   int runId,
-                                   String comment,
-                                   String tags
+  ResponseEntity<HydraTestDetail> createHydraTestDetail(String elapsedTime,
+                                        String diskStr,
+                                        String status,
+                                        String error,
+                                        String bugNumber,
+                                        Integer testId,
+                                        Integer testSuiteDetailId,
+                                        Integer runId,
+                                        String comment,
+                                        String tags
   );
 
-  HydraTestDetail getHydraTestDetail(long testId,
-                                     long testSuiteDetailId,
-                                     int runId
+  ResponseEntity<HydraTestDetail> getHydraTestDetail(Integer testId,
+                                     Integer testSuiteDetailId,
+                                     Integer runId
   );
+
+  ResponseEntity<HydraTestDetailExt> createHydraTestDetailExt(Long testDetailId, String logLocation);
 
   void updateHydraTestDetailBugNumber(String tags,
                                       Integer id
@@ -90,36 +96,36 @@ public interface HydraDBService {
 
   /* HydraTestSuite methods */
 
-  IdAndName getHydraTestsuiteIdAndNameById(@Param("id") Integer id);
-
-  IdAndName getHydraTestsuiteIdAndNameByName(@Param("name") String name);
-
-  HydraTestsuiteDetail getHydraTestsuiteDetail(Integer hydraTestsuiteId,
-                                               Integer hydraRunId,
-                                               Integer hostId,
-                                               Date date
-  );
-
-  public TestSuiteInfo getTestSuiteInfo(long suiteId);
-
-  /* HydraTestSuiteDetail methods */
-
-  HydraTestsuiteDetail getHydraTestsuiteDetailById(Integer hydraTestsuiteId);
-
-  HydraTestsuiteDetail createHydraTestsuiteDetail(Date date,
-                                     String elapsedTime,
-                                     String diskUsage,
-                                     String localConf,
-                                     Integer hydraTestsuiteId,
-                                     Integer hydraRunId,
-                                     Integer hostId,
-                                     String comment,
-                                     String artifactLocation
-  );
+  ResponseEntity<HydraTestsuite> getHydraTestsuiteById(Integer id);
+//
+  ResponseEntity<HydraTestsuite> getHydraTestsuiteByName(String name);
+//
+//  HydraTestsuiteDetail getHydraTestsuiteDetail(Integer hydraTestsuiteId,
+//                                               Integer hydraRunId,
+//                                               Integer hostId,
+//                                               Date date
+//  );
+//
+//  public TestSuiteInfo getTestSuiteInfo(long suiteId);
+//
+//  /* HydraTestSuiteDetail methods */
+//
+//  HydraTestsuiteDetail getHydraTestsuiteDetailById(Integer hydraTestsuiteId);
+//
+//  HydraTestsuiteDetail createHydraTestsuiteDetail(Date date,
+//                                     String elapsedTime,
+//                                     String diskUsage,
+//                                     String localConf,
+//                                     Integer hydraTestsuiteId,
+//                                     Integer hydraRunId,
+//                                     Integer hostId,
+//                                     String comment,
+//                                     String artifactLocation
+//  );
 
   /* Hydra History methods */
 
-  HydraHistory getHydraHistoryForBatteryTest(int id, Map<Integer, HydraRun> hydraRunList);
+  ResponseEntity<HydraHistory> getHydraHistoryForBatteryTest(int id, Map<Integer, HydraRun> hydraRunList);
 
   /* Misc test detail methods */
 
